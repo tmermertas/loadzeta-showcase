@@ -1,0 +1,20 @@
+<svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="zetaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(10, 16)">
+    <!-- Elegant, sharp geometric Z/Load symbol -->
+    <path d="M2,2 L18,2 L6,26 L26,26" fill="none" stroke="url(#zetaGrad)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+    <circle cx="26" cy="2" r="4.5" fill="#38bdf8" />
+    <circle cx="26" cy="2" r="2" fill="#ffffff" />
+    <path d="M-6,14 L8,14" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" opacity="0.8" />
+    <path d="M-2,20 L10,20" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round" opacity="0.6" />
+  </g>
+
+  <text x="56" y="42" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="30px" fill="#ffffff" letter-spacing="-1px">Load</text>
+  <text x="126" y="42" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="300" font-size="30px" fill="#38bdf8" letter-spacing="2px">ZETA</text>
+</svg>
