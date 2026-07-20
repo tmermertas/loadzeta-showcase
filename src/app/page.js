@@ -1,105 +1,196 @@
-import './globals.css';
+import React from 'react';
+import { Truck, DollarSign, MessageCircle, ChevronRight, BarChart3, Map as MapIcon, ShieldCheck } from 'lucide-react';
+import Logo from '../components/Logo';
+import { DashboardMockup, ActiveLoadMockup, ExpenseMockup, DetailedLoadMockup } from '../components/MockupVisuals';
 
 export default function Home() {
   return (
-    <main>
-      {/* Navigation */}
-      <nav style={{ padding: '24px 0', borderBottom: '1px solid var(--glass-border)' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <img src="/logo.svg" alt="Load Zeta Logo" style={{ height: '48px' }} />
-          <div>
-            <a href="https://loadzeta.app" className="btn-secondary" style={{ padding: '10px 24px', fontSize: '1rem' }}>
-              Login to App
-            </a>
-          </div>
+    <div className="landing-container">
+      {/* Navbar */}
+      <nav className="landing-nav">
+        <div className="landing-logo">
+          <Logo size={42} animated={true} />
+        </div>
+        <div className="landing-nav-actions">
+          <a href="https://loadzeta.app" className="nav-btn-outline" style={{ display: 'inline-flex', alignItems: 'center' }}>Sign In</a>
+          <a href="https://loadzeta.app" className="nav-btn-solid" style={{ display: 'inline-flex', alignItems: 'center' }}>Get Started</a>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section style={{ padding: '120px 0', textAlign: 'center' }}>
-        <div className="container" style={{ maxWidth: '900px' }}>
-          <div style={{ display: 'inline-block', padding: '8px 16px', borderRadius: '100px', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--accent-color)', fontWeight: 600, marginBottom: '24px' }} className="animate-fade-up">
-            🚀 The Future of Dispatch Management
-          </div>
-          
-          <h1 style={{ fontSize: '4.5rem', lineHeight: 1.1, marginBottom: '32px', letterSpacing: '-0.03em' }} className="animate-fade-up delay-100">
-            Control your fleet with <br />
-            <span className="text-gradient-accent">Load Zeta.</span>
+      <section className="hero-section">
+        <div className="hero-content">
+          <div className="badge">✨ The New Standard in Logistics</div>
+          <h1 className="hero-title">
+            The Ultimate Logistics<br />
+            <span className="text-gradient">Operating System</span>
           </h1>
-          
-          <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '48px', maxWidth: '700px', margin: '0 auto 48px' }} className="animate-fade-up delay-200">
-            Stop losing track of loads, driver pay, and broker metrics. 
-            Experience the most powerful, premium, and seamless load management platform designed specifically for modern trucking companies.
+          <p className="hero-subtitle">
+            Track loads, automate payouts, and manage your business seamlessly. 
+            All your gross revenue, deductions, and driver payouts in one intelligent platform.
           </p>
-          
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }} className="animate-fade-up delay-300">
-            <a href="https://loadzeta.app" className="btn-primary">
-              Access Dashboard
+          <div className="hero-actions">
+            <a href="https://loadzeta.app" className="cta-button primary">
+              Start for Free <ChevronRight size={20} />
             </a>
-            <a href="#features" className="btn-secondary">
-              Discover Features
+            <a href="https://loadzeta.app" className="cta-button secondary">
+              Login to Dashboard
             </a>
           </div>
         </div>
+        <div className="hero-graphic-container">
+          <DashboardMockup />
+          <ActiveLoadMockup />
+        </div>
       </section>
 
-      {/* App Preview / Glassmorphism Showcase */}
-      <section style={{ padding: '40px 0 120px' }} className="animate-fade-up delay-300">
-        <div className="container">
-          <div className="glass-panel" style={{ padding: '8px', position: 'relative' }}>
-            <div style={{ position: 'absolute', top: '-20px', left: '10%', right: '10%', height: '40px', background: 'var(--accent-color)', filter: 'blur(100px)', opacity: 0.5, zIndex: -1 }}></div>
-            <div style={{ background: '#050505', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
-              {/* Fake Dashboard UI for showcase */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', padding: '32px' }}>
-                {[
-                  { title: "Weekly Gross", val: "$11,600.00", color: "var(--accent-color)" },
-                  { title: "Total Miles", val: "3,734", color: "#fff" },
-                  { title: "Avg RPM", val: "$3.10", color: "var(--accent-color)" },
-                  { title: "Driver Net Pay", val: "$3,230.00", color: "#30d158" }
-                ].map((kpi, i) => (
-                  <div key={i} className="glass-panel" style={{ padding: '24px', background: 'rgba(255,255,255,0.02)' }}>
-                    <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>{kpi.title}</div>
-                    <div style={{ fontSize: '2rem', fontWeight: 700, color: kpi.color }}>{kpi.val}</div>
-                  </div>
-                ))}
-              </div>
+      {/* Features Bento Box Section */}
+      <section className="bento-section">
+        <div className="bento-header">
+          <h2 className="section-title">Everything you need to scale</h2>
+          <p className="section-subtitle">A complete suite of tools designed specifically for owner-operators, company drivers, and dispatchers.</p>
+        </div>
+        
+        <div className="bento-grid">
+          <div className="bento-card span-2">
+            <div className="bento-content">
+              <div className="feature-icon-wrapper"><Truck size={28} /></div>
+              <h3>Seamless Load Tracking</h3>
+              <p>Say goodbye to lost paperwork and messy spreadsheets. Manage your loads, miles, and brokers from a single, unified dashboard.</p>
+            </div>
+            <div className="bento-visual map-visual"></div>
+          </div>
+          
+          <div className="bento-card">
+            <div className="bento-content">
+              <div className="feature-icon-wrapper"><DollarSign size={28} /></div>
+              <h3>Automated Payouts</h3>
+              <p>Instantly calculate driver deductions, percentages, and net pay.</p>
+            </div>
+          </div>
+
+          <div className="bento-card">
+            <div className="bento-content">
+              <div className="feature-icon-wrapper"><BarChart3 size={28} /></div>
+              <h3>Advanced Analytics</h3>
+              <p>Track your profitability, gross revenue, and deadhead miles.</p>
+            </div>
+          </div>
+
+          <div className="bento-card span-2">
+            <div className="bento-content">
+              <div className="feature-icon-wrapper"><MessageCircle size={28} /></div>
+              <h3>Telegram Bot Power</h3>
+              <p>You don't even need to log in. Use our integrated Telegram bot to add loads and check your earnings on the go with a simple text message.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" style={{ padding: '120px 0', background: 'rgba(0,0,0,0.3)', borderTop: '1px solid var(--glass-border)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <h2 style={{ fontSize: '3rem', marginBottom: '16px' }}>Engineered for <span className="text-gradient-accent">Performance</span></h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }}>Everything you need to run your trucking business smoothly.</p>
+      {/* Feature Showcase Section */}
+      <section className="feature-showcase">
+        <div className="feature-row">
+          <div className="feature-text">
+            <h3 className="feature-title">End-to-end Load Tracking</h3>
+            <p className="feature-description">
+              Stop juggling spreadsheets. Track every dispatch from pickup to delivery. Manage broker details, automatically calculate driver pay cuts, and instantly see your true profit margins on every load.
+            </p>
+            <ul className="feature-list">
+              <li><ChevronRight size={16} /> Automated gross and net rate calculations</li>
+              <li><ChevronRight size={16} /> Real-time status updates</li>
+              <li><ChevronRight size={16} /> Deadhead tracking & analytics</li>
+            </ul>
           </div>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
-            {[
-              { title: "Real-time Load Tracking", desc: "Monitor all your loads, brokers, and routes from a centralized, beautiful command center." },
-              { title: "Automated Pay Calculations", desc: "Automatically calculate driver pay, deductions, bonuses, and net profits in seconds." },
-              { title: "Advanced Analytics", desc: "Visualize your best routes, highest paying brokers, and origin states via heatmaps." }
-            ].map((feature, i) => (
-              <div key={i} className="glass-panel feature-card" style={{ padding: '40px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(56, 189, 248, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px', color: 'var(--accent-color)' }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                </div>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '16px' }}>{feature.title}</h3>
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>{feature.desc}</p>
-              </div>
-            ))}
+          <div className="feature-visual">
+            <DetailedLoadMockup />
+          </div>
+        </div>
+
+        <div className="feature-row reverse">
+          <div className="feature-text">
+            <h3 className="feature-title">Effortless Expense Management</h3>
+            <p className="feature-description">
+              Keep your business's finances spotless. Record fuel stops, tolls, maintenance, and recurring deductions. The system automatically ties expenses to specific drivers or trucks, giving you an accurate picture of your bottom line.
+            </p>
+            <ul className="feature-list">
+              <li><ChevronRight size={16} /> Track fuel, tolls, and maintenance</li>
+              <li><ChevronRight size={16} /> Auto-deduct from driver payouts</li>
+              <li><ChevronRight size={16} /> Upload receipts & document proofs</li>
+            </ul>
+          </div>
+          <div className="feature-visual">
+            <ExpenseMockup />
           </div>
         </div>
       </section>
-      
+
+      {/* Pricing Section */}
+      <section className="pricing-section">
+        <h2 className="section-title">Simple, transparent pricing</h2>
+        <p className="section-subtitle">Start for free, upgrade when you need more power.</p>
+        
+        <div className="pricing-grid">
+          <div className="pricing-card">
+            <div className="pricing-header">
+              <h3>Starter</h3>
+              <div className="price">$0<span>/month</span></div>
+              <p>Perfect for owner-operators just getting started.</p>
+            </div>
+            <ul className="pricing-features">
+              <li><ShieldCheck size={18} /> Up to 50 loads per month</li>
+              <li><ShieldCheck size={18} /> Basic Analytics</li>
+              <li><ShieldCheck size={18} /> Email Support</li>
+            </ul>
+            <a href="https://loadzeta.app" className="cta-button secondary full-width" style={{ marginTop: '24px' }}>Get Started</a>
+          </div>
+          
+          <div className="pricing-card premium">
+            <div className="pricing-badge">Most Popular</div>
+            <div className="pricing-header">
+              <h3>Pro Operator</h3>
+              <div className="price">$49<span>/month</span></div>
+              <p>For growing owner-operators and dispatchers that need automation and scale.</p>
+            </div>
+            <ul className="pricing-features">
+              <li><ShieldCheck size={18} /> Unlimited Loads</li>
+              <li><ShieldCheck size={18} /> Advanced Analytics & Maps</li>
+              <li><ShieldCheck size={18} /> Telegram Bot Integration</li>
+              <li><ShieldCheck size={18} /> Priority 24/7 Support</li>
+            </ul>
+            <a href="https://loadzeta.app" className="cta-button primary full-width" style={{ marginTop: '24px' }}>Start Free Trial</a>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer style={{ padding: '40px 0', borderTop: '1px solid var(--glass-border)', textAlign: 'center', color: 'var(--text-secondary)' }}>
-        <div className="container">
-          <p>© {new Date().getFullYear()} Load Zeta. All rights reserved.</p>
+      <footer className="landing-footer">
+        <div className="footer-content">
+          <div className="footer-brand">
+            <Logo size={32} animated={false} />
+          </div>
+          <div className="footer-links">
+            <div className="link-column">
+              <h4>Product</h4>
+              <a href="#">Features</a>
+              <a href="#">Pricing</a>
+              <a href="#">Telegram Bot</a>
+            </div>
+            <div className="link-column">
+              <h4>Company</h4>
+              <a href="#">About Us</a>
+              <a href="#">Contact</a>
+            </div>
+            <div className="link-column">
+              <h4>Legal</h4>
+              <a href="#">Terms of Service</a>
+              <a href="#">Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Load Zeta. All rights reserved.</span>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
