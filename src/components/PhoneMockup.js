@@ -4,7 +4,7 @@ import { Truck, DollarSign, Navigation, TrendingUp } from "lucide-react";
 // Pure placeholder UI (no data) — swap for a real screenshot later if desired.
 export default function PhoneMockup() {
   return (
-    <div className="relative mx-auto w-[280px] sm:w-[300px]">
+    <div lang="en" className="relative mx-auto w-[280px] sm:w-[300px]">
       {/* soft glow */}
       <div className="absolute -inset-6 rounded-[3rem] bg-brand/20 blur-3xl" aria-hidden="true" />
       <div className="relative rounded-[2.6rem] border border-white/15 bg-[#0b0b12] p-2.5 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">

@@ -44,6 +44,18 @@ export const translations = {
         { title: "Watch your income", body: "See real-time monthly income and expense breakdowns, week by week." },
       ],
     },
+    showcase: {
+      heading: "Inside the app",
+      sub: "Not promises — these are the screens you'll actually run your week on.",
+      swipeHint: "Swipe to explore →",
+      screens: {
+        dashboard: { tab: "Dashboard", title: "Your day at a glance", body: "Active load, miles, gross and your real driver pay — live on one screen the second you log in." },
+        history: { tab: "Loads", title: "Every load, locked in", body: "Full load history with per-load earnings that never rewrite themselves — even if your rate changes later." },
+        analytics: { tab: "Analytics", title: "Weekly earnings, visualized", body: "Your month week by week with average RPM — spot a slow week before it hurts." },
+        expenses: { tab: "Expenses", title: "Owner-operator P&L", body: "Fuel, maintenance, insurance — one-off or recurring — deducted automatically so you see your true net." },
+        settlement: { tab: "Settlements", title: "Weekly settlements, done", body: "Auto-built settlement PDFs with paid / unpaid tracking. Close your week in one tap." },
+      },
+    },
     pricing: {
       heading: "Simple, honest pricing",
       sub: "Start free. Keep going only if Load Zeta earns its keep.",
@@ -76,6 +88,11 @@ export const translations = {
       compliance: "CCPA & TCPA compliant",
       ownData: "Your data is yours — delete it anytime.",
       rights: "All rights reserved.",
+      support: "Support",
+      supportBody: "Questions or feedback? We read every message.",
+      ctaTitle: "Know your numbers. Every single week.",
+      ctaSub: "30 days free. No credit card. Set up in minutes.",
+      made: "Built for truckers on the road.",
     },
   },
 
@@ -111,6 +128,18 @@ export const translations = {
         { title: "Gelirini izle", body: "Gerçek zamanlı aylık gelir ve gider dökümünü hafta hafta gör." },
       ],
     },
+    showcase: {
+      heading: "Uygulamanın içi",
+      sub: "Vaat değil — haftanı gerçekten yöneteceğin ekranlar bunlar.",
+      swipeHint: "Kaydırarak keşfet →",
+      screens: {
+        dashboard: { tab: "Panel", title: "Günün tek bakışta", body: "Aktif yük, mil, brüt ve gerçek sürücü ödemen — giriş yaptığın an tek ekranda, canlı." },
+        history: { tab: "Yükler", title: "Her yük kayıt altında", body: "Yük başına kazançla tam geçmiş — oranın sonradan değişse bile geçmiş asla yeniden yazılmaz." },
+        analytics: { tab: "Analiz", title: "Haftalık kazanç, görselleşmiş", body: "Ayın hafta hafta dökümü ve ortalama RPM — yavaş haftayı canını yakmadan fark et." },
+        expenses: { tab: "Giderler", title: "Owner-operator kâr/zarar", body: "Yakıt, bakım, sigorta — tek seferlik ya da tekrarlı — otomatik düşülür, gerçek netini görürsün." },
+        settlement: { tab: "Settlement", title: "Haftalık settlement hazır", body: "Otomatik settlement PDF'leri, ödendi/ödenmedi takibiyle. Haftanı tek dokunuşla kapat." },
+      },
+    },
     pricing: {
       heading: "Basit, dürüst fiyat",
       sub: "Ücretsiz başla. Ancak Load Zeta hakkını verirse devam et.",
@@ -143,6 +172,11 @@ export const translations = {
       compliance: "CCPA & TCPA uyumlu",
       ownData: "Verilerin sana ait — dilediğin an sil.",
       rights: "Tüm hakları saklıdır.",
+      support: "Destek",
+      supportBody: "Soru ya da geri bildirim? Her mesajı okuyoruz.",
+      ctaTitle: "Rakamlarını bil. Her hafta.",
+      ctaSub: "30 gün ücretsiz. Kart yok. Kurulum dakikalar sürer.",
+      made: "Yoldaki kamyoncular için yapıldı.",
     },
   },
 
@@ -178,6 +212,18 @@ export const translations = {
         { title: "Mira tus ingresos", body: "Ingresos y gastos mensuales en tiempo real, semana a semana." },
       ],
     },
+    showcase: {
+      heading: "Dentro de la app",
+      sub: "No son promesas — estas son las pantallas con las que manejarás tu semana.",
+      swipeHint: "Desliza para explorar →",
+      screens: {
+        dashboard: { tab: "Panel", title: "Tu día de un vistazo", body: "Carga activa, millas, bruto y tu pago real — en vivo en una pantalla desde que entras." },
+        history: { tab: "Cargas", title: "Cada carga, asegurada", body: "Historial completo con ganancias por carga que nunca se reescriben — aunque cambies tu tarifa después." },
+        analytics: { tab: "Análisis", title: "Ingresos semanales, visualizados", body: "Tu mes semana a semana con RPM promedio — detecta una semana floja antes de que duela." },
+        expenses: { tab: "Gastos", title: "P&L de owner-operator", body: "Combustible, mantenimiento, seguro — únicos o recurrentes — restados automáticamente para ver tu neto real." },
+        settlement: { tab: "Liquidaciones", title: "Liquidaciones semanales, listas", body: "PDFs de liquidación automáticos con control de pagado / pendiente. Cierra tu semana con un toque." },
+      },
+    },
     pricing: {
       heading: "Precios simples y honestos",
       sub: "Empieza gratis. Continúa solo si Load Zeta lo vale.",
@@ -210,6 +256,11 @@ export const translations = {
       compliance: "Cumple CCPA y TCPA",
       ownData: "Tus datos son tuyos — bórralos cuando quieras.",
       rights: "Todos los derechos reservados.",
+      support: "Soporte",
+      supportBody: "¿Preguntas o comentarios? Leemos cada mensaje.",
+      ctaTitle: "Conoce tus números. Cada semana.",
+      ctaSub: "30 días gratis. Sin tarjeta. Listo en minutos.",
+      made: "Hecho para camioneros en la carretera.",
     },
   },
 
@@ -245,6 +296,18 @@ export const translations = {
         { title: "Следите за доходом", body: "Доходы и расходы по месяцам в реальном времени, неделя за неделей." },
       ],
     },
+    showcase: {
+      heading: "Внутри приложения",
+      sub: "Не обещания — это экраны, на которых вы будете вести свою неделю.",
+      swipeHint: "Листайте, чтобы посмотреть →",
+      screens: {
+        dashboard: { tab: "Панель", title: "Весь день на одном экране", body: "Активный груз, мили, гросс и ваша реальная оплата — в реальном времени с момента входа." },
+        history: { tab: "Грузы", title: "Каждый груз — под замком", body: "Полная история с доходом по каждому грузу, который никогда не переписывается — даже если ставка изменится." },
+        analytics: { tab: "Аналитика", title: "Недельный доход наглядно", body: "Месяц по неделям и средний RPM — заметьте слабую неделю до того, как она ударит по карману." },
+        expenses: { tab: "Расходы", title: "P&L для owner-operator", body: "Топливо, ремонт, страховка — разовые или регулярные — вычитаются автоматически, вы видите чистый доход." },
+        settlement: { tab: "Расчёты", title: "Еженедельный расчёт готов", body: "Автоматические PDF-расчёты с учётом оплачено / не оплачено. Закрывайте неделю одним касанием." },
+      },
+    },
     pricing: {
       heading: "Простые и честные цены",
       sub: "Начните бесплатно. Продолжайте, только если Load Zeta того стоит.",
@@ -277,6 +340,11 @@ export const translations = {
       compliance: "Соответствие CCPA и TCPA",
       ownData: "Ваши данные — ваши. Удаляйте в любой момент.",
       rights: "Все права защищены.",
+      support: "Поддержка",
+      supportBody: "Вопросы или отзывы? Мы читаем каждое сообщение.",
+      ctaTitle: "Знайте свои цифры. Каждую неделю.",
+      ctaSub: "30 дней бесплатно. Без карты. Настройка за минуты.",
+      made: "Создано для дальнобойщиков в пути.",
     },
   },
 };
