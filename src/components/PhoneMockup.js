@@ -13,7 +13,7 @@ export default function PhoneMockup() {
         <div className="overflow-hidden rounded-[2.1rem] bg-gradient-to-b from-[#0e0e16] to-[#050507] p-4 pt-9">
           {/* header row */}
           <div className="mb-4 flex items-center justify-between">
-            <span className="text-sm font-extrabold text-white">Load<span className="text-brand">Zeta</span></span>
+            <span className="text-sm text-white"><span className="font-extrabold">Load</span><span className="font-light tracking-[0.12em] text-[#38bdf8]">ZETA</span></span>
             <span className="h-7 w-7 rounded-full bg-gradient-to-br from-brand to-[#5e5ce6]" />
           </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Users, Route, PlusCircle, Lock, Smartphone, FileText } from "lucide-react";
+import { Users, Route, PlusCircle, Lock, Smartphone, ReceiptText } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem } from "./motion";
 import { useI18n } from "../lib/providers";
 
@@ -12,7 +12,7 @@ export default function Features() {
     { key: "otp", icon: Smartphone, span: "lg:col-span-2", tint: "from-[#5e5ce6]/15 to-transparent", color: "text-[#7c7bff]" },
     { key: "smart", icon: Route, span: "lg:col-span-2", tint: "from-success/15 to-transparent", color: "text-success" },
     { key: "accessorial", icon: PlusCircle, span: "lg:col-span-2", tint: "from-[#ff9f0a]/15 to-transparent", color: "text-[#ff9f0a]" },
-    { key: "docs", icon: FileText, span: "lg:col-span-2", tint: "from-[#0a84ff]/12 to-transparent", color: "text-brand" },
+    { key: "docs", icon: ReceiptText, span: "lg:col-span-2", tint: "from-[#0a84ff]/12 to-transparent", color: "text-brand" },
     { key: "immutable", icon: Lock, span: "lg:col-span-6", tint: "from-[#30d158]/12 to-transparent", color: "text-success" },
   ];
 

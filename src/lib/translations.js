@@ -32,7 +32,7 @@ export const translations = {
         accessorial: { title: "Accessorial pay", body: "Detention, layover, extra stops — add them to a load with one tap." },
         immutable: { title: "History stays locked", body: "Change your rate later and past loads keep the earnings they were paid at. Nothing rewrites itself." },
         otp: { title: "Passwordless sign-in", body: "Just your phone number — secure OTP login in seconds, powered by Twilio." },
-        docs: { title: "Document upload", body: "Attach BOLs, scale tickets and lumper receipts to a load as photos." },
+        docs: { title: "Weekly settlements", body: "Auto-built weekly settlement PDFs and paid/unpaid tracking — your books, done for you." },
       },
     },
     how: {
@@ -99,7 +99,7 @@ export const translations = {
         accessorial: { title: "Ekstra gelirler", body: "Detention, layover, ekstra durak — tek dokunuşla yüke ekle." },
         immutable: { title: "Geçmiş sabit kalır", body: "Oranını sonra değiştirsen bile geçmiş yüklerin kazancı bozulmaz. Hiçbir şey geriye dönük değişmez." },
         otp: { title: "Şifresiz giriş", body: "Sadece telefon numaran — Twilio ile saniyeler içinde güvenli OTP girişi." },
-        docs: { title: "Evrak yükleme", body: "BOL, kantar fişi ve lumper makbuzlarını yüke fotoğraf olarak ekle." },
+        docs: { title: "Haftalık settlement", body: "Otomatik haftalık settlement PDF'leri ve ödendi/ödenmedi takibi — defterin senin için hazır." },
       },
     },
     how: {
@@ -166,7 +166,7 @@ export const translations = {
         accessorial: { title: "Pagos accesorios", body: "Detention, layover, paradas extra — añádelos a una carga con un toque." },
         immutable: { title: "El historial queda fijo", body: "Cambia tu tarifa después y tus cargas pasadas conservan lo que se pagó. Nada se reescribe." },
         otp: { title: "Acceso sin contraseña", body: "Solo tu número — acceso seguro con OTP en segundos, con Twilio." },
-        docs: { title: "Subida de documentos", body: "Adjunta BOL, tickets de báscula y recibos de lumper como fotos." },
+        docs: { title: "Liquidaciones semanales", body: "PDFs de liquidación semanal automáticos y control de pagado/pendiente — tus cuentas listas." },
       },
     },
     how: {
@@ -233,7 +233,7 @@ export const translations = {
         accessorial: { title: "Доп. выплаты", body: "Detention, layover, доп. остановки — добавьте к грузу одним касанием." },
         immutable: { title: "История неизменна", body: "Измените ставку позже — прошлые грузы сохраняют свой доход. Ничего не переписывается." },
         otp: { title: "Вход без пароля", body: "Только ваш номер — безопасный вход по OTP за секунды, через Twilio." },
-        docs: { title: "Загрузка документов", body: "Прикрепляйте BOL, весовые и квитанции lumper как фото к грузу." },
+        docs: { title: "Еженедельные расчёты", body: "Автоматические еженедельные PDF-расчёты и учёт оплачено/не оплачено — учёт готов за вас." },
       },
     },
     how: {
