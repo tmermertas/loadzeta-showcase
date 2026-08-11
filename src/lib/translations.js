@@ -93,6 +93,9 @@ export const translations = {
       ctaTitle: "Know your numbers. Every single week.",
       ctaSub: "30 days free. No credit card. Set up in minutes.",
       made: "Built for truckers on the road.",
+      paddle: "Payments secured by Paddle",
+      language: "Language",
+      backToTop: "Back to top",
     },
   },
 
@@ -177,6 +180,9 @@ export const translations = {
       ctaTitle: "Rakamlarını bil. Her hafta.",
       ctaSub: "30 gün ücretsiz. Kart yok. Kurulum dakikalar sürer.",
       made: "Yoldaki kamyoncular için yapıldı.",
+      paddle: "Ödemeler Paddle güvencesinde",
+      language: "Dil",
+      backToTop: "Başa dön",
     },
   },
 
@@ -261,6 +267,9 @@ export const translations = {
       ctaTitle: "Conoce tus números. Cada semana.",
       ctaSub: "30 días gratis. Sin tarjeta. Listo en minutos.",
       made: "Hecho para camioneros en la carretera.",
+      paddle: "Pagos protegidos por Paddle",
+      language: "Idioma",
+      backToTop: "Volver arriba",
     },
   },
 
@@ -345,6 +354,9 @@ export const translations = {
       ctaTitle: "Знайте свои цифры. Каждую неделю.",
       ctaSub: "30 дней бесплатно. Без карты. Настройка за минуты.",
       made: "Создано для дальнобойщиков в пути.",
+      paddle: "Платежи защищены Paddle",
+      language: "Язык",
+      backToTop: "Наверх",
     },
   },
 };
