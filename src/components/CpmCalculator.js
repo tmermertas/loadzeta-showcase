@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { track } from "@vercel/analytics";
 import { ArrowRight, Calculator, Fuel, Wrench, Building2, TrendingUp } from "lucide-react";
 import { FadeIn } from "./motion";
@@ -41,6 +41,17 @@ export default function CpmCalculator() {
   const [mpg, setMpg] = useState("6.5");
   const [maint, setMaint] = useState("0.18");
 
+  // One "calc_used" event per visit, fired on the first edit — measures
+  // whether the tool actually gets used, not just viewed.
+  const usedRef = useRef(false);
+  const withUse = (setter) => (v) => {
+    if (!usedRef.current) {
+      usedRef.current = true;
+      track("calc_used");
+    }
+    setter(v);
+  };
+
   const m = parseFloat(miles) || 0;
   const fixedTotal = (parseFloat(truck) || 0) + (parseFloat(insurance) || 0) + (parseFloat(otherFixed) || 0);
   const fixedCpm = m > 0 ? fixedTotal / m : NaN;
@@ -70,24 +81,24 @@ export default function CpmCalculator() {
           {/* Inputs */}
           <FadeIn>
             <div className="rounded-3xl border border-[var(--card-border)] bg-[var(--card)] p-6 sm:p-8">
-              <Field label={t("calc.monthlyMiles")} value={miles} onChange={setMiles} step="100" />
+              <Field label={t("calc.monthlyMiles")} value={miles} onChange={withUse(setMiles)} step="100" />
 
               <div className="mt-6 mb-3 text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">
                 {t("calc.fixedHeading")}
               </div>
               <div className="grid gap-4 sm:grid-cols-3">
-                <Field label={t("calc.truckPayment")} value={truck} onChange={setTruck} prefix="$" step="50" />
-                <Field label={t("calc.insurance")} value={insurance} onChange={setInsurance} prefix="$" step="50" />
-                <Field label={t("calc.otherFixed")} value={otherFixed} onChange={setOtherFixed} prefix="$" step="50" />
+                <Field label={t("calc.truckPayment")} value={truck} onChange={withUse(setTruck)} prefix="$" step="50" />
+                <Field label={t("calc.insurance")} value={insurance} onChange={withUse(setInsurance)} prefix="$" step="50" />
+                <Field label={t("calc.otherFixed")} value={otherFixed} onChange={withUse(setOtherFixed)} prefix="$" step="50" />
               </div>
 
               <div className="mt-6 mb-3 text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">
                 {t("calc.varHeading")}
               </div>
               <div className="grid gap-4 sm:grid-cols-3">
-                <Field label={t("calc.fuelPrice")} value={fuel} onChange={setFuel} prefix="$" step="0.05" />
-                <Field label={t("calc.mpg")} value={mpg} onChange={setMpg} step="0.1" />
-                <Field label={t("calc.maintenance")} value={maint} onChange={setMaint} prefix="$" step="0.01" />
+                <Field label={t("calc.fuelPrice")} value={fuel} onChange={withUse(setFuel)} prefix="$" step="0.05" />
+                <Field label={t("calc.mpg")} value={mpg} onChange={withUse(setMpg)} step="0.1" />
+                <Field label={t("calc.maintenance")} value={maint} onChange={withUse(setMaint)} prefix="$" step="0.01" />
               </div>
 
               <p className="mt-6 text-xs text-[var(--text-muted)]">{t("calc.disclaimer")}</p>

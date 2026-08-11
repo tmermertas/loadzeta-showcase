@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
+import { track } from "@vercel/analytics";
 import { translations, LANGS, APP_URL } from "./translations";
 
 const Ctx = createContext(null);
@@ -55,6 +56,7 @@ export function Providers({ children }) {
     setLangState(code);
     try { localStorage.setItem("lz_lang", code); } catch {}
     try { document.documentElement.lang = code; } catch {}
+    track("lang_change", { to: code });
   }, []);
 
   const toggleTheme = useCallback(() => {
@@ -63,6 +65,7 @@ export function Providers({ children }) {
       const root = document.documentElement;
       root.classList.toggle("dark", next === "dark");
       try { localStorage.setItem("lz_theme", next); } catch {}
+      track("theme_change", { to: next });
       return next;
     });
   }, []);

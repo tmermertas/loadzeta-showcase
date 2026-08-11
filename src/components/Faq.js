@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 import { Plus } from "lucide-react";
 import { FadeIn } from "./motion";
 import { useI18n } from "../lib/providers";
@@ -30,7 +31,10 @@ export default function Faq() {
                   }`}
                 >
                   <button
-                    onClick={() => setOpen(isOpen ? -1 : i)}
+                    onClick={() => {
+                      if (!isOpen) track("faq_open", { q: i });
+                      setOpen(isOpen ? -1 : i);
+                    }}
                     aria-expanded={isOpen}
                     className="flex w-full items-center justify-between gap-4 p-5 text-left font-bold"
                   >
