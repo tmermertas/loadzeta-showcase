@@ -1,20 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { track } from "@vercel/analytics";
 import { Moon, Sun, Menu, X, Globe } from "lucide-react";
 import Logo from "./Logo";
 import { useI18n } from "../lib/providers";
-import { APP_URL } from "../lib/translations";
 
 export default function Nav() {
-  const { t, theme, toggleTheme, lang, setLang, langs, mounted } = useI18n();
+  const { t, theme, toggleTheme, lang, setLang, langs, mounted, appUrl } = useI18n();
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const pathname = usePathname();
+  // Section anchors only exist on the home pages; elsewhere go home first.
+  const isHome = ["/", "/tr", "/es", "/ru"].includes(pathname);
+  const anchor = (a) => (isHome ? a : `/${a}`);
 
   const links = [
-    { href: "#features", label: t("nav.features") },
-    { href: "#how", label: t("nav.how") },
-    { href: "#pricing", label: t("nav.pricing") },
+    { href: anchor("#features"), label: t("nav.features") },
+    { href: anchor("#how"), label: t("nav.how") },
+    { href: anchor("#pricing"), label: t("nav.pricing") },
   ];
 
   return (
@@ -65,7 +70,8 @@ export default function Nav() {
             </button>
 
             <a
-              href={`${APP_URL}/`}
+              href={appUrl}
+              onClick={() => track("cta_click", { location: "nav" })}
               className="hidden sm:inline-flex items-center rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-[0_6px_20px_rgba(10,132,255,0.4)] hover:bg-brand-600 transition-colors"
             >
               {t("nav.cta")}
@@ -85,7 +91,7 @@ export default function Nav() {
                 {l.label}
               </a>
             ))}
-            <a href={`${APP_URL}/`} className="mt-1 block rounded-lg bg-brand px-3 py-3 text-center text-sm font-semibold text-white">
+            <a href={appUrl} onClick={() => track("cta_click", { location: "nav_mobile" })} className="mt-1 block rounded-lg bg-brand px-3 py-3 text-center text-sm font-semibold text-white">
               {t("nav.cta")}
             </a>
           </div>

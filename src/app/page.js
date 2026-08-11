@@ -1,23 +1,14 @@
-import Nav from "../components/Nav";
-import Hero from "../components/Hero";
-import Features from "../components/Features";
-import Showcase from "../components/Showcase";
-import HowItWorks from "../components/HowItWorks";
-import Pricing from "../components/Pricing";
-import Footer from "../components/Footer";
+import HomeSections from "../components/HomeSections";
+import { faqJsonLd } from "../lib/seo";
 
 export default function Home() {
   return (
     <>
-      <Nav />
-      <main>
-        <Hero />
-        <Features />
-        <Showcase />
-        <HowItWorks />
-        <Pricing />
-      </main>
-      <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd("en")) }}
+      />
+      <HomeSections />
     </>
   );
 }

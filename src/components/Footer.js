@@ -1,5 +1,7 @@
 "use client";
 
+import { usePathname } from "next/navigation";
+import { track } from "@vercel/analytics";
 import { ShieldCheck, Trash2, Mail, ArrowRight, ArrowUp, Truck, Lock, ChevronRight } from "lucide-react";
 import Logo from "./Logo";
 import { FadeIn } from "./motion";
@@ -25,15 +27,19 @@ function FooterLink({ href, label, external }) {
 }
 
 export default function Footer() {
-  const { t, lang, setLang, langs } = useI18n();
+  const { t, lang, setLang, langs, appUrl } = useI18n();
   const year = new Date().getFullYear();
+  const pathname = usePathname();
+  const isHome = ["/", "/tr", "/es", "/ru"].includes(pathname);
+  const anchor = (a) => (isHome ? a : `/${a}`);
 
   const product = [
-    { href: "#features", label: t("nav.features") },
-    { href: "#app", label: t("showcase.heading") },
-    { href: "#how", label: t("nav.how") },
-    { href: "#pricing", label: t("footer.pricing") },
-    { href: `${APP_URL}/`, label: t("nav.login"), external: true },
+    { href: anchor("#features"), label: t("nav.features") },
+    { href: anchor("#app"), label: t("showcase.heading") },
+    { href: anchor("#how"), label: t("nav.how") },
+    { href: anchor("#pricing"), label: t("footer.pricing") },
+    { href: "/cpm-calculator", label: t("footer.calculator") },
+    { href: appUrl, label: t("nav.login"), external: true },
   ];
   const legal = [
     { href: `${APP_URL}/terms.html`, label: t("footer.terms"), external: true },
@@ -63,7 +69,8 @@ export default function Footer() {
             <p className="relative mt-3 text-[var(--text-muted)]">{t("footer.ctaSub")}</p>
             <div className="relative mt-8 flex flex-col items-center gap-3">
               <a
-                href={`${APP_URL}/`}
+                href={appUrl}
+                onClick={() => track("cta_click", { location: "footer" })}
                 className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-base font-bold text-white shadow-[0_8px_30px_rgba(10,132,255,0.4)] transition-all hover:shadow-[0_8px_40px_rgba(10,132,255,0.6)]"
               >
                 {t("hero.cta")}
@@ -128,6 +135,7 @@ export default function Footer() {
               </div>
               <a
                 href={`mailto:${SUPPORT_EMAIL}`}
+                onClick={() => track("support_email_click")}
                 className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-brand py-3 text-sm font-bold text-white transition-all hover:shadow-[0_6px_24px_rgba(10,132,255,0.4)]"
               >
                 <Mail size={15} /> {SUPPORT_EMAIL}

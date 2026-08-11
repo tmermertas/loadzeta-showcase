@@ -1,4 +1,5 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Providers } from "../lib/providers";
 
@@ -16,7 +17,16 @@ export const metadata = {
   keywords: ["trucking app", "load tracking", "owner operator", "company driver", "CPM calculator", "trucker income", "settlement", "deadhead miles", "rate confirmation parser", "trucker bookkeeping"],
   applicationName: "LoadZeta",
   authors: [{ name: "Load Zeta" }],
-  alternates: { canonical: "https://loadzeta.com" },
+  alternates: {
+    canonical: "https://loadzeta.com",
+    languages: {
+      en: "https://loadzeta.com",
+      tr: "https://loadzeta.com/tr",
+      es: "https://loadzeta.com/es",
+      ru: "https://loadzeta.com/ru",
+      "x-default": "https://loadzeta.com",
+    },
+  },
   robots: {
     index: true,
     follow: true,
@@ -61,7 +71,7 @@ const jsonLd = {
 // Set the theme class before paint to avoid a flash. Default: dark (premium
 // look); honored only if the user hasn't explicitly chosen light.
 const themeScript = `
-(function(){try{var t=localStorage.getItem('lz_theme');if(t!=='light'){document.documentElement.classList.add('dark');}var l=localStorage.getItem('lz_lang');if(l){document.documentElement.lang=l;}}catch(e){document.documentElement.classList.add('dark');}})();
+(function(){try{var t=localStorage.getItem('lz_theme');if(t!=='light'){document.documentElement.classList.add('dark');}var seg=location.pathname.split('/')[1];if(['tr','es','ru'].indexOf(seg)>-1){document.documentElement.lang=seg;}else{var l=localStorage.getItem('lz_lang');if(l){document.documentElement.lang=l;}}}catch(e){document.documentElement.classList.add('dark');}})();
 `;
 
 export default function RootLayout({ children }) {
@@ -73,6 +83,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={jakarta.className}>
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );

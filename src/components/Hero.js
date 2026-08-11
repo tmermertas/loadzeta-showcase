@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import PhoneMockup from "./PhoneMockup";
 import { useI18n } from "../lib/providers";
-import { APP_URL } from "../lib/translations";
 
 export default function Hero() {
-  const { t } = useI18n();
+  const { t, appUrl } = useI18n();
   const ease = [0.16, 1, 0.3, 1];
 
   return (
@@ -43,13 +43,14 @@ export default function Hero() {
               className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3"
             >
               <a
-                href={`${APP_URL}/`}
+                href={appUrl}
+                onClick={() => track("cta_click", { location: "hero" })}
                 className="group inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-base font-semibold text-white shadow-[0_10px_30px_rgba(10,132,255,0.45)] transition-all hover:shadow-[0_14px_40px_rgba(10,132,255,0.6)] hover:-translate-y-0.5"
               >
                 {t("hero.cta")}
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </a>
-              <a href={`${APP_URL}/`} className="inline-flex items-center rounded-full border border-[var(--card-border)] px-7 py-3.5 text-base font-semibold hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+              <a href={appUrl} onClick={() => track("login_click", { location: "hero" })} className="inline-flex items-center rounded-full border border-[var(--card-border)] px-7 py-3.5 text-base font-semibold hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
                 {t("hero.login")}
               </a>
             </motion.div>

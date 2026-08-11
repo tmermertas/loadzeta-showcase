@@ -1,12 +1,12 @@
 "use client";
 
 import { Check, Gift } from "lucide-react";
+import { track } from "@vercel/analytics";
 import { FadeIn } from "./motion";
 import { useI18n } from "../lib/providers";
-import { APP_URL } from "../lib/translations";
 
 export default function Pricing() {
-  const { t } = useI18n();
+  const { t, appUrl } = useI18n();
   const features = t("pricing.features");
 
   return (
@@ -36,7 +36,8 @@ export default function Pricing() {
               </div>
 
               <a
-                href={`${APP_URL}/`}
+                href={appUrl}
+                onClick={() => track("cta_click", { location: "pricing" })}
                 className="mt-7 flex w-full items-center justify-center rounded-full bg-brand px-6 py-3.5 text-base font-semibold text-white shadow-[0_10px_30px_rgba(10,132,255,0.45)] transition-all hover:-translate-y-0.5 hover:shadow-[0_14px_40px_rgba(10,132,255,0.6)]"
               >
                 {t("pricing.cta")}
