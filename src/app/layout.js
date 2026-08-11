@@ -1,4 +1,5 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Providers } from "../lib/providers";
@@ -68,10 +69,10 @@ const jsonLd = {
   publisher: { "@type": "Organization", name: "Load Zeta", url: "https://loadzeta.com" },
 };
 
-// Set the theme class before paint to avoid a flash. Default: dark (premium
-// look); honored only if the user hasn't explicitly chosen light.
+// Set the theme class before paint to avoid a flash. Default: light; the
+// dark class is added only if the user has explicitly chosen dark.
 const themeScript = `
-(function(){try{var t=localStorage.getItem('lz_theme');if(t!=='light'){document.documentElement.classList.add('dark');}var seg=location.pathname.split('/')[1];if(['tr','es','ru'].indexOf(seg)>-1){document.documentElement.lang=seg;}else{var l=localStorage.getItem('lz_lang');if(l){document.documentElement.lang=l;}}}catch(e){document.documentElement.classList.add('dark');}})();
+(function(){try{var t=localStorage.getItem('lz_theme');if(t==='dark'){document.documentElement.classList.add('dark');}var seg=location.pathname.split('/')[1];if(['tr','es','ru'].indexOf(seg)>-1){document.documentElement.lang=seg;}else{var l=localStorage.getItem('lz_lang');if(l){document.documentElement.lang=l;}}}catch(e){}})();
 `;
 
 export default function RootLayout({ children }) {

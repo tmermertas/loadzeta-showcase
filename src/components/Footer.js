@@ -39,6 +39,7 @@ export default function Footer() {
     { href: anchor("#how"), label: t("nav.how") },
     { href: anchor("#pricing"), label: t("footer.pricing") },
     { href: "/cpm-calculator", label: t("footer.calculator") },
+    { href: "/guides", label: t("footer.guides") },
     { href: appUrl, label: t("nav.login"), external: true },
   ];
   const legal = [

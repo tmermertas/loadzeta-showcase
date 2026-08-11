@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
+import { track } from "@vercel/analytics";
 import { translations, LANGS, APP_URL } from "./translations";
 
 const Ctx = createContext(null);
@@ -27,7 +28,7 @@ export function Providers({ children }) {
   const pathLang = pathLangOf(pathname);
   // Path language wins at first render so /tr etc. prerender translated HTML.
   const [lang, setLangState] = useState(pathLang || "en");
-  const [theme, setThemeState] = useState("dark");
+  const [theme, setThemeState] = useState("light");
   const [mounted, setMounted] = useState(false);
   const [refCode, setRefCode] = useState(null);
 
@@ -55,6 +56,7 @@ export function Providers({ children }) {
     setLangState(code);
     try { localStorage.setItem("lz_lang", code); } catch {}
     try { document.documentElement.lang = code; } catch {}
+    track("lang_change", { to: code });
   }, []);
 
   const toggleTheme = useCallback(() => {
@@ -63,6 +65,7 @@ export function Providers({ children }) {
       const root = document.documentElement;
       root.classList.toggle("dark", next === "dark");
       try { localStorage.setItem("lz_theme", next); } catch {}
+      track("theme_change", { to: next });
       return next;
     });
   }, []);
@@ -79,8 +82,16 @@ export function Providers({ children }) {
     [lang]
   );
 
-  // All app CTAs go through this so referral codes survive the .com → .app hop.
-  const appUrl = refCode ? `${APP_URL}/?ref=${encodeURIComponent(refCode)}` : `${APP_URL}/`;
+  // All app CTAs go through this so the visitor's context survives the
+  // .com → .app hop (different origins, no shared storage): referral code,
+  // current language, and current theme. The app reads these at startup.
+  const appUrl = (() => {
+    const params = new URLSearchParams();
+    if (refCode) params.set("ref", refCode);
+    params.set("lang", lang);
+    params.set("theme", theme);
+    return `${APP_URL}/?${params.toString()}`;
+  })();
 
   return (
     <Ctx.Provider value={{ lang, setLang, theme, toggleTheme, t, mounted, langs: LANGS, appUrl }}>

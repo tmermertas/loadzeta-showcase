@@ -38,6 +38,7 @@ export const translations = {
     how: {
       heading: "Three steps to clarity",
       sub: "From rate con to real-time income — no spreadsheets.",
+      demoNote: "This is the actual flow — paste, and the bot does the rest.",
       steps: [
         { title: "Add or paste your load", body: "Type it in, or paste a rate confirmation from Telegram — smart parsing fills in pickup, delivery, miles and pay." },
         { title: "We do the math", body: "The system calculates your earnings automatically from your miles and your pay model." },
@@ -143,6 +144,7 @@ export const translations = {
       language: "Language",
       backToTop: "Back to top",
       calculator: "CPM Calculator",
+      guides: "Guides",
     },
   },
 
@@ -172,6 +174,7 @@ export const translations = {
     how: {
       heading: "Netliğe üç adım",
       sub: "Rate con'dan gerçek zamanlı gelire — tablo yok.",
+      demoNote: "Akış gerçekten böyle — yapıştır, gerisini bot halleder.",
       steps: [
         { title: "Yükü ekle veya yapıştır", body: "Elle gir ya da Telegram'dan rate confirmation yapıştır — akıllı ayrıştırma alım, teslimat, mil ve ödemeyi doldursun." },
         { title: "Hesabı biz yapalım", body: "Sistem, milin ve ödeme modeline göre kazancını otomatik hesaplar." },
@@ -277,6 +280,7 @@ export const translations = {
       language: "Dil",
       backToTop: "Başa dön",
       calculator: "CPM Hesaplayıcı",
+      guides: "Rehberler",
     },
   },
 
@@ -306,6 +310,7 @@ export const translations = {
     how: {
       heading: "Tres pasos hacia la claridad",
       sub: "Del rate con al ingreso en tiempo real — sin hojas de cálculo.",
+      demoNote: "Así es el flujo real: pega y el bot hace el resto.",
       steps: [
         { title: "Añade o pega tu carga", body: "Escríbela o pega una confirmación de tarifa desde Telegram — el procesamiento inteligente rellena recogida, entrega, millas y pago." },
         { title: "Nosotros calculamos", body: "El sistema calcula tus ingresos automáticamente según tus millas y tu modelo de pago." },
@@ -411,6 +416,7 @@ export const translations = {
       language: "Idioma",
       backToTop: "Volver arriba",
       calculator: "Calculadora CPM",
+      guides: "Guías",
     },
   },
 
@@ -440,6 +446,7 @@ export const translations = {
     how: {
       heading: "Три шага к ясности",
       sub: "От rate con до дохода в реальном времени — без таблиц.",
+      demoNote: "Так это и работает — вставьте, остальное сделает бот.",
       steps: [
         { title: "Добавьте или вставьте груз", body: "Введите вручную или вставьте rate confirmation из Telegram — умный разбор заполнит погрузку, доставку, мили и оплату." },
         { title: "Мы посчитаем", body: "Система автоматически считает доход по вашим милям и модели оплаты." },
@@ -545,6 +552,7 @@ export const translations = {
       language: "Язык",
       backToTop: "Наверх",
       calculator: "CPM-калькулятор",
+      guides: "Гайды",
     },
   },
 };
