@@ -40,6 +40,9 @@ export default function CpmCalculator() {
   const [fuel, setFuel] = useState("3.60");
   const [mpg, setMpg] = useState("6.5");
   const [maint, setMaint] = useState("0.18");
+  // 15% because the site's own deadhead guide calls that the common case
+  // ("under 10% is strong; 15% is common; above 20% is your biggest leak").
+  const [deadhead, setDeadhead] = useState("15");
 
   // One "calc_used" event per visit, fired on the first edit — measures
   // whether the tool actually gets used, not just viewed.
@@ -52,13 +55,26 @@ export default function CpmCalculator() {
     setter(v);
   };
 
-  const m = parseFloat(miles) || 0;
-  const fixedTotal = (parseFloat(truck) || 0) + (parseFloat(insurance) || 0) + (parseFloat(otherFixed) || 0);
+  // Negatives are clamped away rather than trusted: a stray minus on the fuel
+  // price used to turn $3.60 into a total CPM of $0.04 - a number that looks
+  // like a great cost base instead of an obvious mistake.
+  const num = (v) => Math.max(0, parseFloat(v) || 0);
+
+  const m = num(miles);
+  const fixedTotal = num(truck) + num(insurance) + num(otherFixed);
   const fixedCpm = m > 0 ? fixedTotal / m : NaN;
-  const fuelCpm = (parseFloat(mpg) || 0) > 0 ? (parseFloat(fuel) || 0) / parseFloat(mpg) : NaN;
-  const maintCpm = parseFloat(maint) || 0;
+  const fuelCpm = num(mpg) > 0 ? num(fuel) / num(mpg) : NaN;
+  const maintCpm = num(maint);
   const totalCpm = fixedCpm + fuelCpm + maintCpm;
   const breakEven = totalCpm * m;
+
+  // The number a driver actually quotes a broker. Cost accrues on EVERY mile
+  // but revenue only on loaded ones, so comparing a rate against total CPM
+  // understates what you need: at 15% deadhead you drive 1.18 total miles per
+  // loaded mile. Capped at 95% so the division stays sane.
+  const deadheadPct = Math.min(95, num(deadhead));
+  const loadedShare = 1 - deadheadPct / 100;
+  const loadedCpm = loadedShare > 0 ? totalCpm / loadedShare : NaN;
 
   const rows = [
     { icon: Building2, label: t("calc.fixedCpm"), value: cpm(fixedCpm) },
@@ -99,6 +115,7 @@ export default function CpmCalculator() {
                 <Field label={t("calc.fuelPrice")} value={fuel} onChange={withUse(setFuel)} prefix="$" step="0.05" />
                 <Field label={t("calc.mpg")} value={mpg} onChange={withUse(setMpg)} step="0.1" />
                 <Field label={t("calc.maintenance")} value={maint} onChange={withUse(setMaint)} prefix="$" step="0.01" />
+                <Field label={t("calc.deadheadPct")} value={deadhead} onChange={withUse(setDeadhead)} step="1" />
               </div>
 
               <p className="mt-6 text-xs text-[var(--text-muted)]">{t("calc.disclaimer")}</p>
@@ -116,6 +133,17 @@ export default function CpmCalculator() {
                 <div className="mt-4 rounded-2xl bg-brand/[0.07] p-4 text-center">
                   <div className="text-xs font-semibold text-[var(--text-muted)]">{t("calc.totalCpm")}</div>
                   <div className="mt-1 text-4xl font-extrabold tracking-tight text-brand">{cpm(totalCpm)}</div>
+                </div>
+
+                {/* The figure that actually decides whether to take a load. */}
+                <div className="mt-3 rounded-2xl border border-success/30 bg-success/[0.07] p-4 text-center">
+                  <div className="text-xs font-semibold text-[var(--text-muted)]">{t("calc.loadedCpm")}</div>
+                  <div className="mt-1 text-3xl font-extrabold tracking-tight text-success">{cpm(loadedCpm)}</div>
+                  <div className="mt-1 text-[11px] text-[var(--text-muted)]">
+                    {/* t() takes a path only - no interpolation in this repo -
+                        so the one placeholder is substituted here. */}
+                    {t("calc.loadedCpmNote").replace("{pct}", deadheadPct)}
+                  </div>
                 </div>
 
                 <div className="mt-4 space-y-2.5">
