@@ -16,10 +16,21 @@ export default function Nav() {
   const isHome = ["/", "/tr", "/es", "/ru"].includes(pathname);
   const anchor = (a) => (isHome ? a : `/${a}`);
 
+  // Five items no longer fit beside the language, theme and CTA controls at
+  // the old md (768px) breakpoint - the nav overflowed by 56px. The inline row
+  // now starts at lg; 768-1023px uses the hamburger, which renders this SAME
+  // array, so nothing is lost there.
+  //
+  // The guides and the CPM calculator were reachable only from the footer, so
+  // the site's two real content pages were invisible from the top of every
+  // page. Labels already exist in all four languages under footer.* - reused
+  // rather than duplicated.
   const links = [
     { href: anchor("#features"), label: t("nav.features") },
     { href: anchor("#how"), label: t("nav.how") },
     { href: anchor("#pricing"), label: t("nav.pricing") },
+    { href: "/guides", label: t("footer.guides") },
+    { href: "/cpm-calculator", label: t("footer.calculator") },
   ];
 
   return (
@@ -28,7 +39,7 @@ export default function Nav() {
         <nav className="flex items-center justify-between gap-3 rounded-2xl border border-[var(--card-border)] bg-[var(--bg)]/70 px-4 py-2.5 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
           <a href="#top" aria-label="LoadZeta"><Logo /></a>
 
-          <div className="hidden md:flex items-center gap-7 text-sm font-semibold text-[var(--text-muted)]">
+          <div className="hidden lg:flex items-center gap-6 text-sm font-semibold text-[var(--text-muted)]">
             {links.map((l) => (
               <a key={l.href} href={l.href} className="hover:text-[var(--text)] transition-colors">{l.label}</a>
             ))}
@@ -77,7 +88,7 @@ export default function Nav() {
               {t("nav.cta")}
             </a>
 
-            <button className="md:hidden rounded-full border border-[var(--card-border)] p-2.5" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+            <button className="lg:hidden rounded-full border border-[var(--card-border)] p-2.5" onClick={() => setOpen((v) => !v)} aria-label="Menu">
               {open ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
@@ -85,7 +96,7 @@ export default function Nav() {
 
         {/* Mobile menu */}
         {open && (
-          <div className="md:hidden mt-2 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-3 backdrop-blur-xl shadow-xl">
+          <div className="lg:hidden mt-2 rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-3 backdrop-blur-xl shadow-xl">
             {links.map((l) => (
               <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block rounded-lg px-3 py-3 text-sm font-semibold text-[var(--text-muted)] hover:bg-black/5 dark:hover:bg-white/5">
                 {l.label}

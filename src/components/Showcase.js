@@ -143,16 +143,23 @@ export default function Showcase() {
             </PhoneFrame>
 
             {/* Dots */}
-            <div className="mt-6 flex justify-center gap-2">
+            <div className="mt-6 flex justify-center">
               {SCREENS.map((s, i) => (
+                /* The dot itself stays 8px tall, but the BUTTON gets a 44px
+                   box around it - the dots were 8x8 hit areas on a phone. The
+                   visual is an inner span so nothing about the look changes. */
                 <button
                   key={s.key}
                   aria-label={t(`showcase.screens.${s.key}.tab`)}
                   onClick={() => go(i, i > index ? 1 : -1, true)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    i === index ? "w-6 bg-brand" : "w-2 bg-[var(--card-border)]"
-                  }`}
-                />
+                  className="flex h-11 w-11 items-center justify-center"
+                >
+                  <span
+                    className={`block h-2 rounded-full transition-all duration-300 ${
+                      i === index ? "w-6 bg-brand" : "w-2 bg-[var(--card-border)]"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
             <div className="mt-3 text-center text-xs text-[var(--text-muted)] lg:hidden">
