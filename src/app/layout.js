@@ -62,9 +62,9 @@ const jsonLd = {
   url: "https://loadzeta.com",
   offers: {
     "@type": "Offer",
-    price: "5.99",
+    price: "12.99",
     priceCurrency: "USD",
-    description: "30 days free, then $5.99/mo for 3 months, then $14.99/mo. No credit card required to start.",
+    description: "30 days free, then $12.99/mo. No credit card required to start.",
   },
   publisher: { "@type": "Organization", name: "Load Zeta", url: "https://loadzeta.com" },
 };
