@@ -29,10 +29,12 @@ export default function Pricing() {
               <div className="mt-6">
                 <div className="text-sm font-semibold text-[var(--text-muted)]">{t("pricing.planName")}</div>
                 <div className="mt-1 flex items-baseline gap-2 flex-wrap">
-                  <span className="text-5xl font-extrabold tracking-tight leading-none">{t("pricing.introPrice")}</span>
-                  <span className="text-[var(--text-muted)] font-medium">{t("pricing.introUnit")}</span>
+                  <span className="text-5xl font-extrabold tracking-tight leading-none">{t("pricing.price")}</span>
+                  <span className="text-[var(--text-muted)] font-medium">{t("pricing.unit")}</span>
                 </div>
-                <div className="mt-2 text-sm font-semibold text-[var(--text-muted)]">{t("pricing.thenPrice")}</div>
+                {/* Was a second price line for the old introductory rate. There
+                    is only one price now, so this says WHEN it starts. */}
+                <div className="mt-2 text-sm font-semibold text-[var(--text-muted)]">{t("pricing.afterTrial")}</div>
               </div>
 
               <a

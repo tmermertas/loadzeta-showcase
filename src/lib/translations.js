@@ -1,6 +1,7 @@
 // All landing-page copy in the app's four languages (en/tr/es/ru).
 // Pricing intentionally mirrors the LIVE loadzeta.app model exactly:
-// 30 days free (no card) -> $5.99/mo for 3 months -> then $14.99/mo.
+// 30 days free (no card) -> then $12.99/mo. The old introductory rate
+// ($5.99 for 3 months, then $14.99) was retired 2026-09-19.
 
 export const APP_URL = "https://loadzeta.app";
 
@@ -67,7 +68,7 @@ export const translations = {
       sub: "Straight answers — the same ones we'd give you by email.",
       items: [
         { q: "Do I need a credit card to start?", a: "No. You get 30 days completely free without entering a card. If LoadZeta earns its keep, you subscribe afterwards — if not, you walk away owing nothing." },
-        { q: "What does it cost after the free month?", a: "$5.99/month for your first 3 months, then $14.99/month. That's the whole price list — no tiers, no add-ons. Payments are handled by Paddle and you can cancel with one tap." },
+        { q: "What does it cost after the free month?", a: "$12.99/month. That's the whole price list — no tiers, no add-ons. Payments are handled by Paddle and you can cancel with one tap." },
         { q: "How does the Telegram bot work?", a: "Paste or forward a rate confirmation to the LoadZeta bot and it fills in pickup, delivery, miles and pay automatically. You can also add loads by hand in the app." },
         { q: "I'm a company driver — is this for me?", a: "Yes. LoadZeta supports company drivers on percentage or per-mile (CPM) pay, and owner-operators on gross percentage with business expenses and P&L." },
         { q: "Who owns my data?", a: "You do. Export everything as CSV whenever you want, and delete your account (and all your data) right from Settings. LoadZeta is CCPA & TCPA compliant." },
@@ -110,9 +111,9 @@ export const translations = {
       free: "30 days free",
       freeSub: "No credit card required",
       then: "then",
-      introPrice: "$5.99",
-      introUnit: "/mo for 3 months",
-      thenPrice: "then $14.99/mo",
+      price: "$12.99",
+      unit: "/mo",
+      afterTrial: "after your 30-day free trial · cancel anytime",
       cta: "Start your free trial",
       features: [
         "Automated load tracking via Telegram bot",
@@ -203,7 +204,7 @@ export const translations = {
       sub: "Dolambaçsız cevaplar — e-postayla vereceğimiz cevapların aynısı.",
       items: [
         { q: "Başlamak için kredi kartı gerekiyor mu?", a: "Hayır. Kart girmeden 30 gün tamamen ücretsiz kullanırsın. LoadZeta hakkını verirse sonrasında abone olursun — vermezse hiçbir borcun olmadan bırakırsın." },
-        { q: "Ücretsiz aydan sonra ne kadar?", a: "İlk 3 ay $5.99/ay, sonrası $14.99/ay. Fiyat listesinin tamamı bu — paket yok, ek ücret yok. Ödemeler Paddle üzerinden; tek dokunuşla iptal edebilirsin." },
+        { q: "Ücretsiz aydan sonra ne kadar?", a: "$12.99/ay. Fiyat listesinin tamamı bu — paket yok, ek ücret yok. Ödemeler Paddle üzerinden; tek dokunuşla iptal edebilirsin." },
         { q: "Telegram botu nasıl çalışıyor?", a: "Rate confirmation'ı LoadZeta botuna yapıştır ya da ilet; alım, teslimat, mil ve ödemeyi otomatik doldurur. Yükleri uygulamadan elle de ekleyebilirsin." },
         { q: "Company driver'ım — bana göre mi?", a: "Evet. LoadZeta yüzde veya mil başı (CPM) çalışan company driver'ları da, brüt yüzde + işletme giderleri + kâr/zarar takibiyle owner-operator'ları da destekler." },
         { q: "Verilerimin sahibi kim?", a: "Sen. İstediğin an her şeyi CSV olarak dışa aktarabilir, hesabını (ve tüm verini) Ayarlar'dan silebilirsin. LoadZeta CCPA & TCPA uyumludur." },
@@ -246,9 +247,9 @@ export const translations = {
       free: "30 gün ücretsiz",
       freeSub: "Kredi kartı gerekmez",
       then: "sonra",
-      introPrice: "$5.99",
-      introUnit: "/ay, 3 ay boyunca",
-      thenPrice: "ardından $14.99/ay",
+      price: "$12.99",
+      unit: "/ay",
+      afterTrial: "30 günlük ücretsiz denemenin ardından · istediğin zaman iptal",
       cta: "Ücretsiz denemene başla",
       features: [
         "Telegram botu ile otomatik yük takibi",
@@ -339,7 +340,7 @@ export const translations = {
       sub: "Respuestas directas — las mismas que te daríamos por correo.",
       items: [
         { q: "¿Necesito tarjeta de crédito para empezar?", a: "No. Tienes 30 días completamente gratis sin introducir tarjeta. Si LoadZeta lo vale, te suscribes después — si no, te vas sin deber nada." },
-        { q: "¿Cuánto cuesta después del mes gratis?", a: "$5.99/mes los primeros 3 meses, luego $14.99/mes. Esa es toda la lista de precios — sin planes ni extras. Los pagos los gestiona Paddle y puedes cancelar con un toque." },
+        { q: "¿Cuánto cuesta después del mes gratis?", a: "$12.99/mes. Esa es toda la lista de precios — sin planes ni extras. Los pagos los gestiona Paddle y puedes cancelar con un toque." },
         { q: "¿Cómo funciona el bot de Telegram?", a: "Pega o reenvía una confirmación de tarifa al bot de LoadZeta y rellena recogida, entrega, millas y pago automáticamente. También puedes añadir cargas a mano en la app." },
         { q: "Soy company driver — ¿me sirve?", a: "Sí. LoadZeta funciona para company drivers con pago por porcentaje o por milla (CPM), y para owner-operators con porcentaje bruto, gastos del negocio y P&L." },
         { q: "¿Quién es dueño de mis datos?", a: "Tú. Exporta todo en CSV cuando quieras y borra tu cuenta (y todos tus datos) desde Ajustes. LoadZeta cumple CCPA y TCPA." },
@@ -382,9 +383,9 @@ export const translations = {
       free: "30 días gratis",
       freeSub: "Sin tarjeta de crédito",
       then: "luego",
-      introPrice: "$5.99",
-      introUnit: "/mes por 3 meses",
-      thenPrice: "después $14.99/mes",
+      price: "$12.99",
+      unit: "/mes",
+      afterTrial: "después de tu prueba gratis de 30 días · cancela cuando quieras",
       cta: "Comienza tu prueba gratis",
       features: [
         "Seguimiento automático de cargas por Telegram",
@@ -475,7 +476,7 @@ export const translations = {
       sub: "Прямые ответы — те же, что мы дали бы вам по почте.",
       items: [
         { q: "Нужна ли карта, чтобы начать?", a: "Нет. 30 дней полностью бесплатно, карту вводить не нужно. Если LoadZeta оправдает себя — подпишетесь потом, если нет — уйдёте, ничего не заплатив." },
-        { q: "Сколько стоит после бесплатного месяца?", a: "$5.99/мес первые 3 месяца, затем $14.99/мес. Это весь прайс — без тарифов и доплат. Платежи обрабатывает Paddle, отмена одним касанием." },
+        { q: "Сколько стоит после бесплатного месяца?", a: "$12.99/мес. Это весь прайс — без тарифов и доплат. Платежи обрабатывает Paddle, отмена одним касанием." },
         { q: "Как работает Telegram-бот?", a: "Вставьте или перешлите rate confirmation боту LoadZeta — он сам заполнит погрузку, доставку, мили и оплату. Грузы можно добавлять и вручную." },
         { q: "Я company driver — мне подойдёт?", a: "Да. LoadZeta поддерживает company drivers с оплатой процентом или за милю (CPM) и owner-operators с процентом от гросса, расходами бизнеса и P&L." },
         { q: "Кому принадлежат мои данные?", a: "Вам. Экспортируйте всё в CSV в любой момент и удаляйте аккаунт (и все данные) прямо в настройках. LoadZeta соответствует CCPA и TCPA." },
@@ -518,9 +519,9 @@ export const translations = {
       free: "30 дней бесплатно",
       freeSub: "Без банковской карты",
       then: "затем",
-      introPrice: "$5.99",
-      introUnit: "/мес в течение 3 месяцев",
-      thenPrice: "потом $14.99/мес",
+      price: "$12.99",
+      unit: "/мес",
+      afterTrial: "после 30 дней бесплатно · отмена в любой момент",
       cta: "Начать бесплатный период",
       features: [
         "Автоучёт грузов через Telegram-бота",
