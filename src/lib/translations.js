@@ -68,7 +68,7 @@ export const translations = {
       sub: "Straight answers — the same ones we'd give you by email.",
       items: [
         { q: "Do I need a credit card to start?", a: "No. You get 30 days completely free without entering a card. If LoadZeta earns its keep, you subscribe afterwards — if not, you walk away owing nothing." },
-        { q: "What does it cost after the free month?", a: "$12.99/month. That's the whole price list — no tiers, no add-ons. Payments are handled by Paddle and you can cancel with one tap." },
+        { q: "What does it cost after the free month?", a: "$12.99/month. That's the whole price list — no tiers, no add-ons. On the web, payments are handled by Paddle; in our iOS app, the subscription is purchased through the App Store. Either way you can cancel with one tap." },
         { q: "How does the Telegram bot work?", a: "Paste or forward a rate confirmation to the LoadZeta bot and it fills in pickup, delivery, miles and pay automatically. You can also add loads by hand in the app." },
         { q: "I'm a company driver — is this for me?", a: "Yes. LoadZeta supports company drivers on percentage or per-mile (CPM) pay, and owner-operators on gross percentage with business expenses and P&L." },
         { q: "Who owns my data?", a: "You do. Export everything as CSV whenever you want, and delete your account (and all your data) right from Settings. LoadZeta is CCPA & TCPA compliant." },
@@ -123,7 +123,7 @@ export const translations = {
         "Team & fleet management",
         "Export your data anytime",
       ],
-      secured: "Payments are securely handled by Paddle. Cancel anytime with one tap.",
+      secured: "Web payments are secured by Paddle; in the iOS app, subscriptions are purchased through the App Store. Cancel anytime with one tap.",
     },
     footer: {
       tagline: "Load parsing & income tracking for U.S. truck drivers.",
@@ -204,7 +204,7 @@ export const translations = {
       sub: "Dolambaçsız cevaplar — e-postayla vereceğimiz cevapların aynısı.",
       items: [
         { q: "Başlamak için kredi kartı gerekiyor mu?", a: "Hayır. Kart girmeden 30 gün tamamen ücretsiz kullanırsın. LoadZeta hakkını verirse sonrasında abone olursun — vermezse hiçbir borcun olmadan bırakırsın." },
-        { q: "Ücretsiz aydan sonra ne kadar?", a: "$12.99/ay. Fiyat listesinin tamamı bu — paket yok, ek ücret yok. Ödemeler Paddle üzerinden; tek dokunuşla iptal edebilirsin." },
+        { q: "Ücretsiz aydan sonra ne kadar?", a: "$12.99/ay. Fiyat listesinin tamamı bu — paket yok, ek ücret yok. Web'de ödemeler Paddle üzerinden; iOS uygulamasında abonelik App Store üzerinden alınır. Her iki durumda da tek dokunuşla iptal edebilirsin." },
         { q: "Telegram botu nasıl çalışıyor?", a: "Rate confirmation'ı LoadZeta botuna yapıştır ya da ilet; alım, teslimat, mil ve ödemeyi otomatik doldurur. Yükleri uygulamadan elle de ekleyebilirsin." },
         { q: "Company driver'ım — bana göre mi?", a: "Evet. LoadZeta yüzde veya mil başı (CPM) çalışan company driver'ları da, brüt yüzde + işletme giderleri + kâr/zarar takibiyle owner-operator'ları da destekler." },
         { q: "Verilerimin sahibi kim?", a: "Sen. İstediğin an her şeyi CSV olarak dışa aktarabilir, hesabını (ve tüm verini) Ayarlar'dan silebilirsin. LoadZeta CCPA & TCPA uyumludur." },
@@ -259,7 +259,7 @@ export const translations = {
         "Takım & filo yönetimi",
         "Verini dilediğin an dışa aktar",
       ],
-      secured: "Ödemeler Paddle güvencesindedir. Dilediğin an tek dokunuşla iptal.",
+      secured: "Web ödemeleri Paddle güvencesindedir; iOS uygulamasında abonelik App Store üzerinden alınır. Dilediğin an tek dokunuşla iptal.",
     },
     footer: {
       tagline: "ABD'li kamyon şoförleri için yük ayrıştırma ve gelir takibi.",
@@ -340,7 +340,7 @@ export const translations = {
       sub: "Respuestas directas — las mismas que te daríamos por correo.",
       items: [
         { q: "¿Necesito tarjeta de crédito para empezar?", a: "No. Tienes 30 días completamente gratis sin introducir tarjeta. Si LoadZeta lo vale, te suscribes después — si no, te vas sin deber nada." },
-        { q: "¿Cuánto cuesta después del mes gratis?", a: "$12.99/mes. Esa es toda la lista de precios — sin planes ni extras. Los pagos los gestiona Paddle y puedes cancelar con un toque." },
+        { q: "¿Cuánto cuesta después del mes gratis?", a: "$12.99/mes. Esa es toda la lista de precios — sin planes ni extras. En la web los pagos los gestiona Paddle; en la app de iOS, la suscripción se compra en el App Store. En ambos casos puedes cancelar con un toque." },
         { q: "¿Cómo funciona el bot de Telegram?", a: "Pega o reenvía una confirmación de tarifa al bot de LoadZeta y rellena recogida, entrega, millas y pago automáticamente. También puedes añadir cargas a mano en la app." },
         { q: "Soy company driver — ¿me sirve?", a: "Sí. LoadZeta funciona para company drivers con pago por porcentaje o por milla (CPM), y para owner-operators con porcentaje bruto, gastos del negocio y P&L." },
         { q: "¿Quién es dueño de mis datos?", a: "Tú. Exporta todo en CSV cuando quieras y borra tu cuenta (y todos tus datos) desde Ajustes. LoadZeta cumple CCPA y TCPA." },
@@ -395,7 +395,7 @@ export const translations = {
         "Gestión de equipo y flota",
         "Exporta tus datos cuando quieras",
       ],
-      secured: "Los pagos se procesan de forma segura con Paddle. Cancela cuando quieras.",
+      secured: "Los pagos web se procesan de forma segura con Paddle; en la app de iOS, la suscripción se compra en el App Store. Cancela cuando quieras.",
     },
     footer: {
       tagline: "Procesamiento de cargas e ingresos para camioneros de EE. UU.",
@@ -476,7 +476,7 @@ export const translations = {
       sub: "Прямые ответы — те же, что мы дали бы вам по почте.",
       items: [
         { q: "Нужна ли карта, чтобы начать?", a: "Нет. 30 дней полностью бесплатно, карту вводить не нужно. Если LoadZeta оправдает себя — подпишетесь потом, если нет — уйдёте, ничего не заплатив." },
-        { q: "Сколько стоит после бесплатного месяца?", a: "$12.99/мес. Это весь прайс — без тарифов и доплат. Платежи обрабатывает Paddle, отмена одним касанием." },
+        { q: "Сколько стоит после бесплатного месяца?", a: "$12.99/мес. Это весь прайс — без тарифов и доплат. В вебе платежи обрабатывает Paddle; в приложении для iOS подписка оформляется через App Store. В обоих случаях отмена одним касанием." },
         { q: "Как работает Telegram-бот?", a: "Вставьте или перешлите rate confirmation боту LoadZeta — он сам заполнит погрузку, доставку, мили и оплату. Грузы можно добавлять и вручную." },
         { q: "Я company driver — мне подойдёт?", a: "Да. LoadZeta поддерживает company drivers с оплатой процентом или за милю (CPM) и owner-operators с процентом от гросса, расходами бизнеса и P&L." },
         { q: "Кому принадлежат мои данные?", a: "Вам. Экспортируйте всё в CSV в любой момент и удаляйте аккаунт (и все данные) прямо в настройках. LoadZeta соответствует CCPA и TCPA." },
@@ -531,7 +531,7 @@ export const translations = {
         "Управление командой и автопарком",
         "Экспорт данных в любой момент",
       ],
-      secured: "Платежи безопасно обрабатываются Paddle. Отмена в любой момент одним касанием.",
+      secured: "Веб-платежи безопасно обрабатываются Paddle; в приложении для iOS подписка оформляется через App Store. Отмена в любой момент одним касанием.",
     },
     footer: {
       tagline: "Разбор грузов и учёт дохода для дальнобойщиков США.",
