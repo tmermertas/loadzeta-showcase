@@ -18,9 +18,9 @@ export default function sitemap() {
     { url: "https://loadzeta.com/guides/cost-per-mile-guide", lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: "https://loadzeta.com/guides/reduce-deadhead-miles", lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: "https://loadzeta.com/guides/weekly-settlements-explained", lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://loadzeta.com/#features", lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://loadzeta.com/#app", lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://loadzeta.com/#how", lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: "https://loadzeta.com/#pricing", lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    // No "/#features"-style entries here. A fragment is not a separate URL:
+    // crawlers strip it and see the home page four more times, so the only
+    // effect is a sitemap that reports more URLs than it has and duplicate
+    // rows in Search Console.
   ];
 }
