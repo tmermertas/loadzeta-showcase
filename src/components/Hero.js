@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { track } from "@vercel/analytics";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import PhoneMockup from "./PhoneMockup";
+import AppStoreBadge from "./AppStoreBadge";
 import { useI18n } from "../lib/providers";
 
 export default function Hero() {
@@ -61,6 +62,15 @@ export default function Hero() {
             >
               <ShieldCheck size={15} className="text-success" /> {t("hero.note")}
             </motion.p>
+
+            {/* Its own row rather than a third button: Apple's badge carries
+                its own shape and shrinks into noise beside two pills. */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5, ease }}
+              className="mt-6 flex justify-center lg:justify-start"
+            >
+              <AppStoreBadge location="hero" />
+            </motion.div>
           </div>
 
           {/* Mockup */}
