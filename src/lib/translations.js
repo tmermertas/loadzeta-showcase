@@ -5,6 +5,11 @@
 
 export const APP_URL = "https://loadzeta.app";
 
+// The iPhone app went live on 25 Sep 2026. Canonical form as Apple's own
+// lookup returns it, slug included, so the link never bounces through a
+// redirect.
+export const APP_STORE_URL = "https://apps.apple.com/us/app/load-zeta/id6798843515";
+
 export const LANGS = [
   { code: "en", label: "English", flag: "🇺🇸" },
   { code: "tr", label: "Türkçe", flag: "🇹🇷" },
@@ -24,6 +29,7 @@ export const translations = {
       note: "No credit card required · Cancel anytime",
       login: "Log in",
     },
+    appStore: { alt: "Download on the App Store" },
     features: {
       heading: "Everything you need to run your books",
       sub: "Purpose-built for how truckers actually get paid.",
@@ -163,6 +169,7 @@ export const translations = {
       note: "Kredi kartı gerekmez · Dilediğin an iptal",
       login: "Giriş yap",
     },
+    appStore: { alt: "App Store'dan indirin" },
     features: {
       heading: "Defterini tutmak için gereken her şey",
       sub: "Kamyoncuların gerçekte nasıl ödeme aldığına göre tasarlandı.",
@@ -302,6 +309,7 @@ export const translations = {
       note: "Sin tarjeta · Cancela cuando quieras",
       login: "Entrar",
     },
+    appStore: { alt: "Consíguelo en el App Store" },
     features: {
       heading: "Todo lo que necesitas para tus cuentas",
       sub: "Diseñado para cómo cobran realmente los camioneros.",
@@ -441,6 +449,7 @@ export const translations = {
       note: "Без карты · Отмена в любой момент",
       login: "Войти",
     },
+    appStore: { alt: "Загрузите в App Store" },
     features: {
       heading: "Всё, чтобы вести учёт",
       sub: "Создано под то, как реально платят дальнобойщикам.",
