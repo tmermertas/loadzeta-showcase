@@ -167,6 +167,7 @@ export const translations = {
     footer: {
       tagline: "Load parsing & income tracking for U.S. truck drivers.",
       product: "Product",
+      resources: "Resources",
       legal: "Legal",
       terms: "Terms of Service",
       privacy: "Privacy Policy",
@@ -336,6 +337,7 @@ export const translations = {
     footer: {
       tagline: "ABD'li kamyon şoförleri için yük ayrıştırma ve gelir takibi.",
       product: "Ürün",
+      resources: "Kaynaklar",
       legal: "Yasal",
       terms: "Hizmet Şartları",
       privacy: "Gizlilik Politikası",
@@ -505,6 +507,7 @@ export const translations = {
     footer: {
       tagline: "Procesamiento de cargas e ingresos para camioneros de EE. UU.",
       product: "Producto",
+      resources: "Recursos",
       legal: "Legal",
       terms: "Términos del servicio",
       privacy: "Política de privacidad",
@@ -674,6 +677,7 @@ export const translations = {
     footer: {
       tagline: "Разбор грузов и учёт дохода для дальнобойщиков США.",
       product: "Продукт",
+      resources: "Ресурсы",
       legal: "Правовое",
       terms: "Условия обслуживания",
       privacy: "Политика конфиденциальности",
