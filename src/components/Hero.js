@@ -143,7 +143,7 @@ export default function Hero() {
               />
               <FloatCard
                 icon={Clock3} tone="text-[#ffd60a]" label="Total outstanding" value="$6,228.80" note="3 unpaid weeks"
-                delay={1.05} className="bottom-[60px] left-0 lg:bottom-[92px] lg:left-[-72px]"
+                delay={1.05} className="bottom-[60px] left-[-8px] lg:bottom-[104px] lg:left-[-132px]"
               />
             </div>
           </div>
