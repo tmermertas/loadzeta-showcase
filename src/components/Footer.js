@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { track } from "@vercel/analytics";
-import { ShieldCheck, Trash2, Mail, ArrowRight, ArrowUp, Truck, Lock, ChevronRight } from "lucide-react";
+import { ShieldCheck, Trash2, Mail, ArrowRight, ArrowUp, Truck, Lock, ArrowUpRight, Check } from "lucide-react";
 import Logo from "./Logo";
 import AppStoreBadge from "./AppStoreBadge";
 import { FadeIn } from "./motion";
@@ -16,17 +16,28 @@ function FooterLink({ href, label, external }) {
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="group inline-flex items-center gap-1 text-[var(--text-muted)] transition-colors hover:text-brand"
+      className="group inline-flex items-center gap-1 text-[var(--stage-muted)] transition-colors hover:text-white"
     >
       <span>{label}</span>
-      <ChevronRight
-        size={13}
-        className="-translate-x-1 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
-      />
+      {external && (
+        <ArrowUpRight size={13} className="opacity-0 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:opacity-70" />
+      )}
     </a>
   );
 }
 
+function Column({ title, children }) {
+  return (
+    <div>
+      <div className="mb-4 text-[11px] font-bold uppercase tracking-[0.16em] text-white/45">{title}</div>
+      <ul className="space-y-3 text-sm">{children}</ul>
+    </div>
+  );
+}
+
+// The page ends the way it begins: one inset navy stage. The closing call to
+// action, the site map and the legal line share it, so the footer reads as the
+// hero's counterpart rather than a grey strip under the page.
 export default function Footer() {
   const { t, lang, setLang, langs, appUrl } = useI18n();
   const year = new Date().getFullYear();
@@ -35,13 +46,16 @@ export default function Footer() {
   const anchor = (a) => (isHome ? a : `/${a}`);
 
   const product = [
-    { href: anchor("#features"), label: t("nav.features") },
     { href: anchor("#app"), label: t("showcase.heading") },
+    { href: anchor("#features"), label: t("nav.features") },
     { href: anchor("#how"), label: t("nav.how") },
     { href: anchor("#pricing"), label: t("footer.pricing") },
-    { href: "/cpm-calculator", label: t("footer.calculator") },
-    { href: "/guides", label: t("footer.guides") },
     { href: appUrl, label: t("nav.login"), external: true },
+  ];
+  const resources = [
+    { href: "/guides", label: t("footer.guides") },
+    { href: "/cpm-calculator", label: t("footer.calculator") },
+    { href: anchor("#faq"), label: t("faq.heading") },
   ];
   const legal = [
     { href: `${APP_URL}/terms.html`, label: t("footer.terms"), external: true },
@@ -49,146 +63,129 @@ export default function Footer() {
     { href: `${APP_URL}/refund-policy.html`, label: t("footer.refund"), external: true },
   ];
   const badges = [
-    { icon: ShieldCheck, label: t("footer.compliance"), color: "text-success" },
-    { icon: Lock, label: t("footer.paddle"), color: "text-brand" },
-    { icon: Trash2, label: t("footer.ownData"), color: "text-[#a78bfa]" },
+    { icon: ShieldCheck, label: t("footer.compliance"), color: "text-[#7ee2a0]" },
+    { icon: Lock, label: t("footer.paddle"), color: "text-[#5ac8fa]" },
+    { icon: Trash2, label: t("footer.ownData"), color: "text-[#bf9bff]" },
   ];
 
   return (
-    <footer className="relative overflow-hidden bg-[var(--bg-subtle)]">
-      {/* gradient hairline */}
-      <div className="h-px w-full bg-gradient-to-r from-transparent via-brand/60 to-transparent" aria-hidden="true" />
+    <footer className="px-2 pb-2 pt-4 sm:px-3 sm:pb-3 sm:pt-8">
+      <div className="stage stage-grid rounded-[2rem] sm:rounded-[2.5rem]">
+        <div className="glow left-[-10%] top-[-12%] h-[440px] w-[440px] bg-brand opacity-30" aria-hidden="true" />
+        <div className="glow right-[-8%] top-[6%] h-[420px] w-[420px] bg-[#7c8cff] opacity-25" aria-hidden="true" />
+        <div className="glow bottom-[-20%] left-[30%] h-[420px] w-[620px] bg-[#0a84ff] opacity-15" aria-hidden="true" />
 
-      {/* CTA band */}
-      <div className="mx-auto max-w-6xl px-4 pt-16 sm:px-6">
-        <FadeIn>
-          <div className="stage stage-grid rounded-[2rem] px-6 py-14 text-center sm:rounded-[2.5rem] sm:px-12 sm:py-20">
-            <div className="glow -left-24 -top-24 h-72 w-72 bg-brand opacity-30" aria-hidden="true" />
-            <div className="glow -bottom-24 -right-24 h-72 w-72 bg-[#7c8cff] opacity-30" aria-hidden="true" />
-            <h2 className="relative mx-auto max-w-2xl text-3xl font-extrabold tracking-tight sm:text-5xl">
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
+          {/* Closing call to action */}
+          <FadeIn className="py-16 text-center sm:py-24">
+            <h2 className="mx-auto max-w-3xl text-[2rem] font-extrabold leading-[1.08] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
               {t("footer.ctaTitle")}
             </h2>
-            <p className="relative mt-4 text-lg text-[var(--stage-muted)]">{t("footer.ctaSub")}</p>
-            <div className="relative mt-8 flex flex-col items-center gap-3">
+            <p className="mt-5 text-lg text-[var(--stage-muted)]">{t("footer.ctaSub")}</p>
+            <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
               <a
                 href={appUrl}
                 onClick={() => track("cta_click", { location: "footer" })}
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-base font-bold text-white shadow-[0_8px_30px_rgba(10,132,255,0.4)] transition-all hover:shadow-[0_8px_40px_rgba(10,132,255,0.6)]"
+                className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-base font-bold text-white shadow-[0_10px_34px_rgba(10,132,255,0.5)] transition-all hover:-translate-y-0.5 hover:shadow-[0_14px_44px_rgba(10,132,255,0.65)]"
               >
                 {t("hero.cta")}
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </a>
-              <span className="text-xs text-[var(--stage-muted)]">{t("hero.note")}</span>
-              <AppStoreBadge location="footer_cta" className="mt-2" />
+              <AppStoreBadge location="footer_cta" />
             </div>
-          </div>
-        </FadeIn>
-      </div>
+            <p className="mt-5 flex items-center justify-center gap-1.5 text-sm text-[var(--stage-muted)]">
+              <ShieldCheck size={15} className="text-success" /> {t("hero.note")}
+            </p>
+          </FadeIn>
 
-      {/* Main footer */}
-      <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
-          {/* Brand */}
-          <div className="lg:col-span-4">
-            <Logo />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--text-muted)]">{t("footer.tagline")}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {badges.map((b) => (
-                <span
-                  key={b.label}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--card-border)] bg-[var(--card)] px-3 py-1.5 text-[11px] font-semibold text-[var(--text-muted)]"
-                >
-                  <b.icon size={12} className={b.color} /> {b.label}
-                </span>
-              ))}
-            </div>
-          </div>
+          <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" aria-hidden="true" />
 
-          {/* Product */}
-          <div className="lg:col-span-2">
-            <div className="mb-3 text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">{t("footer.product")}</div>
-            <ul className="space-y-2.5 text-sm">
-              {product.map((l) => (
-                <li key={l.label}><FooterLink {...l} /></li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div className="lg:col-span-2">
-            <div className="mb-3 text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">{t("footer.legal")}</div>
-            <ul className="space-y-2.5 text-sm">
-              {legal.map((l) => (
-                <li key={l.label}><FooterLink {...l} /></li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support card */}
-          <div className="lg:col-span-4">
-            <div className="rounded-2xl border border-[var(--card-border)] bg-[var(--card)] p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
-              <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand/10 text-brand">
-                  <Mail size={18} />
-                </span>
-                <div>
-                  <div className="text-sm font-bold">{t("footer.support")}</div>
-                  <div className="mt-0.5 text-xs leading-relaxed text-[var(--text-muted)]">{t("footer.supportBody")}</div>
-                </div>
-              </div>
-              <a
-                href={`mailto:${SUPPORT_EMAIL}`}
-                onClick={() => track("support_email_click")}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-brand py-3 text-sm font-bold text-white transition-all hover:shadow-[0_6px_24px_rgba(10,132,255,0.4)]"
-              >
-                <Mail size={15} /> {SUPPORT_EMAIL}
-              </a>
-            </div>
-
-            {/* Language switcher */}
-            <div className="mt-5">
-              <div className="mb-2 text-xs font-bold uppercase tracking-widest text-[var(--text-muted)]">{t("footer.language")}</div>
-              <div className="flex flex-wrap gap-2">
-                {langs.map((l) => (
-                  <button
-                    key={l.code}
-                    onClick={() => setLang(l.code)}
-                    className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-[11px] font-bold transition-colors ${
-                      lang === l.code
-                        ? "border-brand bg-brand/10 text-brand"
-                        : "border-[var(--card-border)] bg-[var(--card)] text-[var(--text-muted)] hover:border-brand/40"
-                    }`}
-                  >
-                    {l.label}
-                  </button>
+          {/* Site map */}
+          <div className="grid gap-x-8 gap-y-12 py-14 sm:py-16 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <a href={isHome ? "#top" : "/"} aria-label="LoadZeta" className="inline-block"><Logo /></a>
+              <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--stage-muted)]">{t("footer.tagline")}</p>
+              <ul className="mt-6 space-y-2.5">
+                {badges.map((b) => (
+                  <li key={b.label} className="flex items-start gap-2.5 text-[13px] font-medium text-white/70">
+                    <b.icon size={15} className={`mt-0.5 shrink-0 ${b.color}`} /> {b.label}
+                  </li>
                 ))}
+              </ul>
+            </div>
+
+            <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:col-span-8">
+              <Column title={t("footer.product")}>
+                {product.map((l) => <li key={l.label}><FooterLink {...l} /></li>)}
+              </Column>
+              <Column title={t("footer.resources")}>
+                {resources.map((l) => <li key={l.label}><FooterLink {...l} /></li>)}
+              </Column>
+              <Column title={t("footer.legal")}>
+                {legal.map((l) => <li key={l.label}><FooterLink {...l} /></li>)}
+              </Column>
+              <Column title={t("footer.language")}>
+                {langs.map((l) => (
+                  <li key={l.code}>
+                    <button
+                      onClick={() => setLang(l.code)}
+                      aria-pressed={lang === l.code}
+                      className={`inline-flex items-center gap-2 transition-colors hover:text-white ${
+                        lang === l.code ? "font-semibold text-white" : "text-[var(--stage-muted)]"
+                      }`}
+                    >
+                      <span aria-hidden="true">{l.flag}</span> {l.label}
+                      {lang === l.code && <Check size={14} className="text-[#5ac8fa]" />}
+                    </button>
+                  </li>
+                ))}
+              </Column>
+            </div>
+          </div>
+
+          {/* Support */}
+          <div className="chip flex flex-col items-start gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+            <div className="flex items-center gap-4">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/20 text-[#5ac8fa]">
+                <Mail size={19} />
+              </span>
+              <div>
+                <div className="font-bold">{t("footer.support")}</div>
+                <div className="mt-0.5 text-sm text-[var(--stage-muted)]">{t("footer.supportBody")}</div>
               </div>
             </div>
+            <a
+              href={`mailto:${SUPPORT_EMAIL}`}
+              onClick={() => track("support_email_click")}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-[#0a1020] transition-transform hover:-translate-y-0.5 sm:w-auto"
+            >
+              <Mail size={15} /> {SUPPORT_EMAIL}
+            </a>
+          </div>
+
+          {/* Bottom bar */}
+          <div className="relative z-10 flex flex-col items-center justify-between gap-4 py-8 text-xs text-white/50 sm:flex-row">
+            <span>© {year} Load Zeta · {t("footer.rights")}</span>
+            <span className="inline-flex items-center gap-1.5">
+              <Truck size={13} className="text-[#5ac8fa]" /> {t("footer.made")}
+            </span>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              aria-label={t("footer.backToTop")}
+              className="chip group grid h-10 w-10 place-items-center rounded-full text-white transition-colors hover:bg-white/15"
+            >
+              <ArrowUp size={16} className="transition-transform group-hover:-translate-y-0.5" />
+            </button>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-[var(--card-border)] pt-6 text-xs text-[var(--text-muted)] sm:flex-row">
-          <span>© {year} Load Zeta · {t("footer.rights")}</span>
-          <span className="inline-flex items-center gap-1.5">
-            <Truck size={13} className="text-brand" /> {t("footer.made")}
-          </span>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            aria-label={t("footer.backToTop")}
-            className="group grid h-10 w-10 place-items-center rounded-full border border-[var(--card-border)] bg-[var(--card)] transition-all hover:border-brand/50 hover:shadow-[0_0_20px_rgba(10,132,255,0.25)]"
-          >
-            <ArrowUp size={16} className="transition-transform group-hover:-translate-y-0.5" />
-          </button>
+        {/* Giant fading wordmark, cut off by the stage's bottom edge */}
+        <div
+          className="pointer-events-none -mt-6 mb-[-5vw] select-none bg-gradient-to-b from-white/[0.11] to-transparent bg-clip-text text-center text-[21vw] font-extrabold leading-[0.78] tracking-tight text-transparent"
+          aria-hidden="true"
+        >
+          LoadZeta
         </div>
-      </div>
-
-      {/* Giant fading watermark */}
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-[-0.22em] select-none overflow-hidden bg-gradient-to-b from-[var(--text)] to-transparent bg-clip-text text-center text-[21vw] font-extrabold leading-none tracking-tight text-transparent opacity-[0.045]"
-        aria-hidden="true"
-      >
-        LoadZeta
       </div>
     </footer>
   );
