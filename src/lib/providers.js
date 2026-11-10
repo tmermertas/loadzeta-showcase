@@ -1,18 +1,21 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { track } from "@vercel/analytics";
 import { translations, LANGS, APP_URL } from "./translations";
+import { localePath, splitLangPath, isLocalizedRoute } from "./locale";
 
 const Ctx = createContext(null);
 
-// Language segments served as static routes (/tr, /es, /ru). English is "/".
-const PATH_LANGS = ["tr", "es", "ru"];
-
+// The language a URL states: its prefix (/tr, /es, /ru), or English for an
+// unprefixed page whose content is rendered per language (/guides) - there the
+// HTML is English, so the chrome around it must be too. null = the URL does
+// not say (the home page, the calculator): follow the visitor's choice.
 function pathLangOf(pathname) {
-  const seg = (pathname || "").split("/")[1];
-  return PATH_LANGS.includes(seg) ? seg : null;
+  const { lang, rest } = splitLangPath(pathname || "/");
+  if (lang) return lang;
+  return isLocalizedRoute(rest) ? "en" : null;
 }
 
 function detectLang() {
@@ -25,6 +28,7 @@ function detectLang() {
 
 export function Providers({ children }) {
   const pathname = usePathname();
+  const router = useRouter();
   const pathLang = pathLangOf(pathname);
   // Path language wins at first render so /tr etc. prerender translated HTML.
   const [lang, setLangState] = useState(pathLang || "en");
@@ -57,7 +61,13 @@ export function Providers({ children }) {
     try { localStorage.setItem("lz_lang", code); } catch {}
     try { document.documentElement.lang = code; } catch {}
     track("lang_change", { to: code });
-  }, []);
+    // On a page rendered per language, the other language is another URL.
+    const { rest } = splitLangPath(pathname || "/");
+    if (isLocalizedRoute(rest)) {
+      const target = localePath(code, rest);
+      if (target !== pathname) router.push(target);
+    }
+  }, [pathname, router]);
 
   const toggleTheme = useCallback(() => {
     setThemeState((prev) => {

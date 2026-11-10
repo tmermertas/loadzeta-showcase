@@ -8,6 +8,7 @@ import AppStoreBadge from "./AppStoreBadge";
 import { FadeIn } from "./motion";
 import { useI18n } from "../lib/providers";
 import { APP_URL } from "../lib/translations";
+import { localePath } from "../lib/locale";
 
 const SUPPORT_EMAIL = "support@loadzeta.com";
 
@@ -43,7 +44,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
   const pathname = usePathname();
   const isHome = ["/", "/tr", "/es", "/ru"].includes(pathname);
-  const anchor = (a) => (isHome ? a : `/${a}`);
+  const anchor = (a) => (isHome ? a : `${localePath(lang, "/")}${a}`);
 
   const product = [
     { href: anchor("#app"), label: t("showcase.heading") },
@@ -53,7 +54,7 @@ export default function Footer() {
     { href: appUrl, label: t("nav.login"), external: true },
   ];
   const resources = [
-    { href: "/guides", label: t("footer.guides") },
+    { href: localePath(lang, "/guides"), label: t("footer.guides") },
     { href: "/cpm-calculator", label: t("footer.calculator") },
     { href: anchor("#faq"), label: t("faq.heading") },
   ];
@@ -103,7 +104,7 @@ export default function Footer() {
           {/* Site map */}
           <div className="grid gap-x-8 gap-y-12 py-14 sm:py-16 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <a href={isHome ? "#top" : "/"} aria-label="LoadZeta" className="inline-block"><Logo /></a>
+              <a href={isHome ? "#top" : localePath(lang, "/")} aria-label="LoadZeta" className="inline-block"><Logo /></a>
               <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--stage-muted)]">{t("footer.tagline")}</p>
               <ul className="mt-6 space-y-2.5">
                 {badges.map((b) => (
