@@ -1,3 +1,6 @@
+import { GUIDES } from "../lib/guides";
+import { ALL_LANGS, SITE, localePath } from "../lib/locale";
+
 export default function sitemap() {
   const now = new Date();
   const langAlternates = {
@@ -14,10 +17,16 @@ export default function sitemap() {
     { url: "https://loadzeta.com/es", lastModified: now, changeFrequency: "weekly", priority: 0.9, alternates: langAlternates },
     { url: "https://loadzeta.com/ru", lastModified: now, changeFrequency: "weekly", priority: 0.9, alternates: langAlternates },
     { url: "https://loadzeta.com/cpm-calculator", lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: "https://loadzeta.com/guides", lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: "https://loadzeta.com/guides/cost-per-mile-guide", lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://loadzeta.com/guides/reduce-deadhead-miles", lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: "https://loadzeta.com/guides/weekly-settlements-explained", lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    // Every guide page in every language, each listing its siblings.
+    ...["/guides", ...GUIDES.map((g) => `/guides/${g.slug}`)].flatMap((path) =>
+      ALL_LANGS.map((lang) => ({
+        url: `${SITE}${localePath(lang, path)}`,
+        lastModified: now,
+        changeFrequency: path === "/guides" ? "weekly" : "monthly",
+        priority: (path === "/guides" ? 0.8 : 0.7) - (lang === "en" ? 0 : 0.1),
+        alternates: { languages: Object.fromEntries(ALL_LANGS.map((l) => [l, `${SITE}${localePath(l, path)}`])) },
+      })),
+    ),
     // No "/#features"-style entries here. A fragment is not a separate URL:
     // crawlers strip it and see the home page four more times, so the only
     // effect is a sitemap that reports more URLs than it has and duplicate

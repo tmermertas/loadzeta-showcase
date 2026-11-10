@@ -7,6 +7,7 @@ import { track } from "@vercel/analytics";
 import { Moon, Sun, Menu, X, Globe, Check, ArrowRight } from "lucide-react";
 import Logo from "./Logo";
 import { useI18n } from "../lib/providers";
+import { localePath, splitLangPath } from "../lib/locale";
 
 const ease = [0.16, 1, 0.3, 1];
 // Home-page sections the bar can point at while you scroll.
@@ -29,7 +30,9 @@ export default function Nav({ overStage = true }) {
   const pathname = usePathname();
   // Section anchors only exist on the home pages; elsewhere go home first.
   const isHome = ["/", "/tr", "/es", "/ru"].includes(pathname);
-  const anchor = (a) => (isHome ? a : `/${a}`);
+  const { rest } = splitLangPath(pathname);
+  // Section links lead to the home page in the visitor's language.
+  const anchor = (a) => (isHome ? a : `${localePath(lang, "/")}${a}`);
   const solid = !overStage || scrolled || open;
 
   useEffect(() => {
@@ -75,7 +78,7 @@ export default function Nav({ overStage = true }) {
     { href: anchor("#features"), label: t("nav.features"), id: "features" },
     { href: anchor("#how"), label: t("nav.how"), id: "how" },
     { href: anchor("#pricing"), label: t("nav.pricing"), id: "pricing" },
-    { href: "/guides", label: t("footer.guides"), on: pathname.startsWith("/guides") },
+    { href: localePath(lang, "/guides"), label: t("footer.guides"), on: rest.startsWith("/guides") },
     { href: "/cpm-calculator", label: t("footer.calculator"), on: pathname === "/cpm-calculator" },
   ];
   const isOn = (l) => l.on || (isHome && l.id && l.id === active);
@@ -92,7 +95,7 @@ export default function Nav({ overStage = true }) {
               : "border-transparent bg-transparent"
           }`}
         >
-          <a href={isHome ? "#top" : "/"} aria-label="LoadZeta" className="shrink-0"><Logo /></a>
+          <a href={isHome ? "#top" : localePath(lang, "/")} aria-label="LoadZeta" className="shrink-0"><Logo /></a>
 
           <div className="hidden items-center gap-0.5 lg:flex">
             {links.map((l) => (
