@@ -2,6 +2,8 @@ import Nav from "./Nav";
 import Hero from "./Hero";
 import Features from "./Features";
 import Showcase from "./Showcase";
+import Native from "./Native";
+import Everywhere from "./Everywhere";
 import HowItWorks from "./HowItWorks";
 import Pricing from "./Pricing";
 import Faq from "./Faq";
@@ -14,8 +16,10 @@ export default function HomeSections() {
       <Nav />
       <main>
         <Hero />
-        <Features />
         <Showcase />
+        <Native />
+        <Features />
+        <Everywhere />
         <HowItWorks />
         <Pricing />
         <Faq />

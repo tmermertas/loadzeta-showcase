@@ -36,7 +36,7 @@ export default function Nav() {
   return (
     <header className="fixed top-0 inset-x-0 z-50">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-3">
-        <nav className="flex items-center justify-between gap-3 rounded-2xl border border-[var(--card-border)] bg-[var(--bg)]/70 px-4 py-2.5 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+        <nav className="flex items-center justify-between gap-2 rounded-2xl border border-[var(--card-border)] bg-[var(--bg)]/80 px-3 py-2.5 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] sm:gap-3 sm:px-4">
           <a href="#top" aria-label="LoadZeta"><Logo /></a>
 
           <div className="hidden lg:flex items-center gap-6 text-sm font-semibold text-[var(--text-muted)]">
@@ -45,12 +45,12 @@ export default function Nav() {
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             {/* Language */}
             <div className="relative">
               <button
                 onClick={() => setLangOpen((v) => !v)}
-                className="flex items-center gap-1.5 rounded-full border border-[var(--card-border)] px-3 py-2 text-sm font-semibold hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+                className="flex items-center gap-1.5 rounded-full border border-[var(--card-border)] px-2.5 py-2 text-sm font-semibold sm:px-3 hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
                 aria-label="Language"
               >
                 <Globe size={16} />

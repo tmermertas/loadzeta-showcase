@@ -25,13 +25,14 @@
   --text-muted: #5a5a72;
 }
 
+/* Dark follows the App Store pages: deep navy, not neutral black. */
 .dark {
-  --bg: #050507;
-  --bg-subtle: #0b0b12;
-  --card: rgba(255, 255, 255, 0.03);
+  --bg: #070b16;
+  --bg-subtle: #0a1020;
+  --card: rgba(255, 255, 255, 0.035);
   --card-border: rgba(255, 255, 255, 0.09);
   --text: #f5f5f7;
-  --text-muted: #a1a1aa;
+  --text-muted: #a3a8b8;
   color-scheme: dark;
 }
 
@@ -54,12 +55,53 @@ body {
   overflow-x: hidden;
 }
 
-/* Ambient brand glow behind the hero. */
-.bg-hero-glow {
-  background:
-    radial-gradient(60% 50% at 50% 0%, rgba(10, 132, 255, 0.18), transparent 70%),
-    radial-gradient(40% 40% at 85% 20%, rgba(48, 209, 88, 0.10), transparent 70%);
+/* The "stage": the navy backdrop of the App Store screenshots. Always dark,
+   in both themes - the app's light screens need a dark surface to sit on, and
+   it makes the site and the store page read as one product. */
+.stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  background: radial-gradient(120% 90% at 50% -15%, #1a2748 0%, #0f172a 45%, #0a1020 100%);
+  --stage-muted: rgba(235, 235, 245, 0.72);
+  --stage-line: rgba(255, 255, 255, 0.1);
 }
+/* A faint grid, masked to fade out - texture without noise. */
+.stage-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(70% 60% at 50% 0%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(70% 60% at 50% 0%, #000 0%, transparent 75%);
+  pointer-events: none;
+}
+.glow {
+  position: absolute;
+  z-index: -1;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+}
+/* Glass chip on a stage. */
+.chip {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.07);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+/* Slow vertical drift for the hero phones. */
+@keyframes drift {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.drift { animation: drift 7s ease-in-out infinite; }
+.drift-slow { animation: drift 9s ease-in-out -3s infinite; }
 
 /* Animated gradient border for the highlighted pricing card. */
 @property --border-angle {
@@ -87,6 +129,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .animated-border::before { animation: none; }
+  .drift, .drift-slow { animation: none; }
 }
 
 /* Hide scrollbars on horizontal swipe carousels while keeping scroll. */
