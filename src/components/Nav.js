@@ -13,12 +13,13 @@ const ease = [0.16, 1, 0.3, 1];
 const SPY = ["features", "how", "pricing"];
 
 // The bar belongs to the stage: navy glass with white type in both themes, so
-// it reads the same over the hero, over a white section and on the guides.
-// On the home pages it starts out with no surface at all - just the logo and
-// links lying on the hero - and gathers into a floating capsule once the page
-// moves. Everywhere else there is no hero behind it, so it is a capsule from
-// the first pixel.
-export default function Nav() {
+// it reads the same over a hero, over a white section and over the footer.
+// Every page that mounts it opens with a navy stage (the home hero, or
+// PageHero on the guides and the calculator), so it starts out with no surface
+// at all - just the logo and links lying on the stage - and gathers into a
+// floating capsule once the page moves. A page WITHOUT a stage at the top must
+// pass overStage={false}, or the white type lands on a white page.
+export default function Nav({ overStage = true }) {
   const { t, theme, toggleTheme, lang, setLang, langs, mounted, appUrl } = useI18n();
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -29,7 +30,7 @@ export default function Nav() {
   // Section anchors only exist on the home pages; elsewhere go home first.
   const isHome = ["/", "/tr", "/es", "/ru"].includes(pathname);
   const anchor = (a) => (isHome ? a : `/${a}`);
-  const solid = !isHome || scrolled || open;
+  const solid = !overStage || scrolled || open;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
