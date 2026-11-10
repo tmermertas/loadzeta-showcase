@@ -62,13 +62,13 @@ export default function Footer() {
       {/* CTA band */}
       <div className="mx-auto max-w-6xl px-4 pt-16 sm:px-6">
         <FadeIn>
-          <div className="relative overflow-hidden rounded-3xl border border-brand/20 bg-gradient-to-br from-brand/[0.12] via-transparent to-[#5e5ce6]/[0.12] px-6 py-12 text-center sm:px-12 sm:py-16">
-            <div className="pointer-events-none absolute -left-24 -top-24 h-64 w-64 rounded-full bg-brand/20 blur-3xl" aria-hidden="true" />
-            <div className="pointer-events-none absolute -bottom-24 -right-24 h-64 w-64 rounded-full bg-[#5e5ce6]/20 blur-3xl" aria-hidden="true" />
-            <h2 className="relative text-3xl font-extrabold tracking-tight sm:text-4xl">
+          <div className="stage stage-grid rounded-[2rem] px-6 py-14 text-center sm:rounded-[2.5rem] sm:px-12 sm:py-20">
+            <div className="glow -left-24 -top-24 h-72 w-72 bg-brand opacity-30" aria-hidden="true" />
+            <div className="glow -bottom-24 -right-24 h-72 w-72 bg-[#7c8cff] opacity-30" aria-hidden="true" />
+            <h2 className="relative mx-auto max-w-2xl text-3xl font-extrabold tracking-tight sm:text-5xl">
               {t("footer.ctaTitle")}
             </h2>
-            <p className="relative mt-3 text-[var(--text-muted)]">{t("footer.ctaSub")}</p>
+            <p className="relative mt-4 text-lg text-[var(--stage-muted)]">{t("footer.ctaSub")}</p>
             <div className="relative mt-8 flex flex-col items-center gap-3">
               <a
                 href={appUrl}
@@ -78,7 +78,7 @@ export default function Footer() {
                 {t("hero.cta")}
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </a>
-              <span className="text-xs text-[var(--text-muted)]">{t("hero.note")}</span>
+              <span className="text-xs text-[var(--stage-muted)]">{t("hero.note")}</span>
               <AppStoreBadge location="footer_cta" className="mt-2" />
             </div>
           </div>
