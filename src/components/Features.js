@@ -1,6 +1,6 @@
 "use client";
 
-import { Users, Route, PlusCircle, Lock, Smartphone, ReceiptText } from "lucide-react";
+import { Users, Route, PlusCircle, Lock, Smartphone, ReceiptText, FileScan } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem } from "./motion";
 import { useI18n } from "../lib/providers";
 
@@ -8,12 +8,15 @@ export default function Features() {
   const { t } = useI18n();
 
   const cards = [
-    { key: "profiles", icon: Users, span: "lg:col-span-4", tint: "from-brand/15 to-brand/0", color: "text-brand" },
+    // Rate con reading (PDF/photo via the bot or the app) leads: it is the
+    // newest feature and the one that saves the most typing.
+    { key: "ratecon", icon: FileScan, span: "lg:col-span-4", tint: "from-brand/15 to-brand/0", color: "text-brand" },
     { key: "otp", icon: Smartphone, span: "lg:col-span-2", tint: "from-[#5e5ce6]/15 to-transparent", color: "text-[#7c7bff]" },
     { key: "smart", icon: Route, span: "lg:col-span-2", tint: "from-success/15 to-transparent", color: "text-success" },
     { key: "accessorial", icon: PlusCircle, span: "lg:col-span-2", tint: "from-[#ff9f0a]/15 to-transparent", color: "text-[#ff9f0a]" },
     { key: "docs", icon: ReceiptText, span: "lg:col-span-2", tint: "from-[#0a84ff]/12 to-transparent", color: "text-brand" },
-    { key: "immutable", icon: Lock, span: "lg:col-span-6", tint: "from-[#30d158]/12 to-transparent", color: "text-success" },
+    { key: "profiles", icon: Users, span: "lg:col-span-3", tint: "from-brand/12 to-brand/0", color: "text-brand" },
+    { key: "immutable", icon: Lock, span: "lg:col-span-3", tint: "from-[#30d158]/12 to-transparent", color: "text-success" },
   ];
 
   return (
