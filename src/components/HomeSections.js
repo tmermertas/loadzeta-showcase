@@ -9,7 +9,7 @@ import Pricing from "./Pricing";
 import Faq from "./Faq";
 import Footer from "./Footer";
 
-// Shared landing composition — rendered at "/" (EN) and "/tr|/es|/ru".
+// Shared landing composition - rendered at "/" (EN) and "/tr|/es|/ru".
 export default function HomeSections() {
   return (
     <>

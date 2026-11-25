@@ -1,7 +1,7 @@
 import { translations } from "./translations";
 
 // FAQPage structured data, generated from the same translations the page
-// renders — one source of truth, no drift between visible copy and schema.
+// renders - one source of truth, no drift between visible copy and schema.
 export function faqJsonLd(lang) {
   const items = (translations[lang] || translations.en).faq.items;
   return {

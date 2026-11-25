@@ -153,7 +153,7 @@ body {
   border-radius: 6px;
 }
 
-/* Gentle lift on hover for cards — desktop only (no sticky-hover on touch). */
+/* Gentle lift on hover for cards - desktop only (no sticky-hover on touch). */
 @media (hover: hover) {
   .card-lift {
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);

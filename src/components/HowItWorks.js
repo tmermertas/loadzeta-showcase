@@ -8,7 +8,7 @@ import { useI18n } from "../lib/providers";
 
 const ICONS = [MessageSquareText, Calculator, LineChart];
 
-// Telegram-style chat mockup — the product's "magic moment": paste a rate
+// Telegram-style chat mockup - the product's "magic moment": paste a rate
 // con, the bot answers with the parsed load. Product UI copy stays English.
 function TelegramMockup() {
   const bubble = {

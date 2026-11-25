@@ -5,7 +5,7 @@ import CpmCalculator from "../../components/CpmCalculator";
 export const metadata = {
   title: "Free Trucking Cost Per Mile (CPM) Calculator | LoadZeta",
   description:
-    "Work out your real cost per mile — fixed costs, fuel and maintenance — and the break-even revenue your truck needs every month. Free, no sign-up.",
+    "Work out your real cost per mile - fixed costs, fuel and maintenance - and the break-even revenue your truck needs every month. Free, no sign-up.",
   alternates: { canonical: "https://loadzeta.com/cpm-calculator" },
   openGraph: {
     title: "Free Trucking Cost Per Mile (CPM) Calculator",

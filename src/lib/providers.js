@@ -38,7 +38,7 @@ export function Providers({ children }) {
 
   useEffect(() => {
     if (pathLang) {
-      // URL is explicit intent — persist it so navigation keeps the language.
+      // URL is explicit intent - persist it so navigation keeps the language.
       try { localStorage.setItem("lz_lang", pathLang); } catch {}
       setLangState(pathLang);
     } else {
