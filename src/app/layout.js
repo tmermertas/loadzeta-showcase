@@ -1,3 +1,4 @@
+import { SOCIAL } from "../lib/social";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
@@ -66,7 +67,13 @@ const jsonLd = {
     priceCurrency: "USD",
     description: "30 days free, then $5.99/mo. No credit card required to start.",
   },
-  publisher: { "@type": "Organization", name: "Load Zeta", url: "https://loadzeta.com" },
+  publisher: {
+    "@type": "Organization",
+    name: "Load Zeta",
+    url: "https://loadzeta.com",
+    logo: "https://loadzeta.com/favicon.svg",
+    sameAs: SOCIAL.map((s) => s.href),
+  },
 };
 
 // Set the theme class before paint to avoid a flash. Default: light; the

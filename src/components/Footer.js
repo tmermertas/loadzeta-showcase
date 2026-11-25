@@ -5,6 +5,7 @@ import { track } from "@vercel/analytics";
 import { ShieldCheck, Trash2, Mail, ArrowRight, ArrowUp, Truck, Lock, ArrowUpRight, Check } from "lucide-react";
 import Logo from "./Logo";
 import AppStoreBadge from "./AppStoreBadge";
+import SocialLinks from "./SocialLinks";
 import { FadeIn } from "./motion";
 import { useI18n } from "../lib/providers";
 import { APP_URL } from "../lib/translations";
@@ -113,6 +114,10 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-7">
+                <div className="mb-3 text-[11px] font-bold uppercase tracking-[0.16em] text-white/45">{t("footer.follow")}</div>
+                <SocialLinks label={t("footer.follow")} />
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:col-span-8">
