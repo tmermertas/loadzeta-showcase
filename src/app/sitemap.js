@@ -1,4 +1,5 @@
 import { GUIDES } from "../lib/guides";
+import { openJobs } from "../lib/jobs";
 import { ALL_LANGS, SITE, localePath } from "../lib/locale";
 
 export default function sitemap() {
@@ -17,6 +18,9 @@ export default function sitemap() {
     { url: "https://loadzeta.com/es", lastModified: now, changeFrequency: "weekly", priority: 0.9, alternates: langAlternates },
     { url: "https://loadzeta.com/ru", lastModified: now, changeFrequency: "weekly", priority: 0.9, alternates: langAlternates },
     { url: "https://loadzeta.com/cpm-calculator", lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: "https://loadzeta.com/careers", lastModified: now, changeFrequency: "weekly", priority: 0.6 },
+    // Open roles only: an expired one leaves the sitemap with its structured data.
+    ...openJobs(now).map((j) => ({ url: `https://loadzeta.com/careers/${j.slug}`, lastModified: now, changeFrequency: "weekly", priority: 0.6 })),
     // Every guide page in every language, each listing its siblings.
     ...["/guides", ...GUIDES.map((g) => `/guides/${g.slug}`)].flatMap((path) =>
       ALL_LANGS.map((lang) => ({
@@ -33,3 +37,6 @@ export default function sitemap() {
     // rows in Search Console.
   ];
 }
+
+// Re-generated daily so an expired role leaves it.
+export const revalidate = 86400;
