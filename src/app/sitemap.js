@@ -18,9 +18,17 @@ export default function sitemap() {
     { url: "https://loadzeta.com/es", lastModified: now, changeFrequency: "weekly", priority: 0.9, alternates: langAlternates },
     { url: "https://loadzeta.com/ru", lastModified: now, changeFrequency: "weekly", priority: 0.9, alternates: langAlternates },
     { url: "https://loadzeta.com/cpm-calculator", lastModified: now, changeFrequency: "monthly", priority: 0.8 },
-    { url: "https://loadzeta.com/careers", lastModified: now, changeFrequency: "weekly", priority: 0.6 },
-    // Open roles only: an expired one leaves the sitemap with its structured data.
-    ...openJobs(now).map((j) => ({ url: `https://loadzeta.com/careers/${j.slug}`, lastModified: now, changeFrequency: "weekly", priority: 0.6 })),
+    // Careers in every language; open roles only (an expired one leaves the
+    // sitemap with its structured data).
+    ...["/careers", ...openJobs(now).map((j) => `/careers/${j.slug}`)].flatMap((path) =>
+      ALL_LANGS.map((lang) => ({
+        url: `${SITE}${localePath(lang, path)}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: lang === "en" ? 0.6 : 0.5,
+        alternates: { languages: Object.fromEntries(ALL_LANGS.map((l) => [l, `${SITE}${localePath(l, path)}`])) },
+      })),
+    ),
     // Every guide page in every language, each listing its siblings.
     ...["/guides", ...GUIDES.map((g) => `/guides/${g.slug}`)].flatMap((path) =>
       ALL_LANGS.map((lang) => ({

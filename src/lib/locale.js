@@ -28,7 +28,7 @@ export function splitLangPath(pathname = "/") {
 // going to the other URL. The home page is not listed: its copy is translated
 // on the client, so it follows the stored choice as it always has.
 export function isLocalizedRoute(rest) {
-  return rest === "/guides" || rest.startsWith("/guides/");
+  return rest === "/guides" || rest.startsWith("/guides/") || rest === "/careers" || rest.startsWith("/careers/");
 }
 
 // hreflang map for one path across the four languages, plus x-default.

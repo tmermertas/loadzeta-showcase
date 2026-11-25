@@ -58,7 +58,7 @@ export default function Footer() {
     { href: localePath(lang, "/guides"), label: t("footer.guides") },
     { href: "/cpm-calculator", label: t("footer.calculator") },
     { href: anchor("#faq"), label: t("faq.heading") },
-    { href: "/careers", label: t("footer.careers") },
+    { href: localePath(lang, "/careers"), label: t("footer.careers") },
   ];
   const legal = [
     { href: `${APP_URL}/terms.html`, label: t("footer.terms"), external: true },

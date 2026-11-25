@@ -1,4 +1,5 @@
-// Open roles shown on /careers. Each one also carries Google's JobPosting
+// Open roles shown on /careers (and /tr|/es|/ru/careers - the page frame is
+// translated in careersCopy.js, the ads stay in English). Each one also carries Google's JobPosting
 // structured data on its own page (Google wants it on the job's page, not on
 // the list). A role disappears from the list, the sitemap and its page's
 // structured data once `validThrough` has passed - the pages re-render daily
@@ -13,8 +14,6 @@ export const JOBS = [
   {
     slug: "social-media-performance-marketing-specialist",
     title: "Social Media & Performance Marketing Specialist",
-    location: "Remote · Türkiye",
-    type: "Part-time · Contractor",
     employmentType: ["PART_TIME", "CONTRACTOR"],
     country: "TR",
     datePosted: "2026-11-25",
@@ -65,8 +64,6 @@ export const JOBS = [
   {
     slug: "driver-community-growth-lead",
     title: "Driver Community & Growth Lead",
-    location: "Remote · United States",
-    type: "Part-time · Contractor",
     employmentType: ["PART_TIME", "CONTRACTOR"],
     country: "US",
     datePosted: "2026-11-25",
