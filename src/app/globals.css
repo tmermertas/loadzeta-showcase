@@ -81,12 +81,18 @@ body {
   mask-image: radial-gradient(70% 60% at 50% 0%, #000 0%, transparent 75%);
   pointer-events: none;
 }
+/* A soft light behind a stage. Drawn as a radial fade (a mask over the
+   element's own colour) rather than filter: blur(90px): on real iPhones Safari
+   sometimes composited text animating over a blurred layer as dark boxes
+   behind each line. The scale stands in for the blur's spread past the edge. */
 .glow {
   position: absolute;
   z-index: -1;
   border-radius: 9999px;
-  filter: blur(90px);
   pointer-events: none;
+  scale: 1.45;
+  -webkit-mask-image: radial-gradient(closest-side, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 100%);
+  mask-image: radial-gradient(closest-side, #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 100%);
 }
 /* Glass chip on a stage. */
 .chip {
@@ -106,7 +112,9 @@ body {
   from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
 }
-.rise { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+/* backwards, not both: once the entrance ends nothing stays on the element, so
+   Safari can drop its compositing layer instead of keeping it for good. */
+.rise { animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
 .rise-1 { animation-delay: 0.08s; }
 .rise-2 { animation-delay: 0.16s; }
 .rise-3 { animation-delay: 0.24s; }
