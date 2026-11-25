@@ -4,7 +4,7 @@ import { track } from "@vercel/analytics";
 import { Smartphone, MonitorSmartphone, Send, ArrowUpRight } from "lucide-react";
 import { FadeIn, Stagger, StaggerItem } from "./motion";
 import { Phone, Tablet } from "./Device";
-import AppStoreBadge from "./AppStoreBadge";
+import StoreBadges from "./StoreBadges";
 import { useI18n } from "../lib/providers";
 import ipadHome from "../assets/screens/ipad-home.webp";
 import loads from "../assets/screens/loads.webp";
@@ -49,7 +49,7 @@ export default function Everywhere() {
         </Stagger>
 
         <FadeIn className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-          <AppStoreBadge location="devices" />
+          <StoreBadges location="devices" />
           <a
             href={appUrl}
             onClick={() => track("cta_click", { location: "devices" })}

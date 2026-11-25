@@ -10,6 +10,8 @@ export const APP_URL = "https://loadzeta.app";
 // lookup returns it, slug included, so the link never bounces through a
 // redirect.
 export const APP_STORE_URL = "https://apps.apple.com/us/app/load-zeta/id6798843515";
+// Set once the app is public on Google Play; until then the badge has no link.
+export const GOOGLE_PLAY_URL = null;
 
 export const LANGS = [
   { code: "en", label: "English", flag: "🇺🇸" },
@@ -38,6 +40,7 @@ export const translations = {
       ],
     },
     appStore: { alt: "Download on the App Store" },
+    googlePlay: { alt: "Get it on Google Play" },
     features: {
       heading: "Everything you need to run your books",
       sub: "Purpose-built for how truckers actually get paid.",
@@ -232,6 +235,7 @@ export const translations = {
       ],
     },
     appStore: { alt: "App Store'dan indirin" },
+    googlePlay: { alt: "Google Play'den indirin" },
     features: {
       heading: "Defterini tutmak için gereken her şey",
       sub: "Kamyoncuların gerçekte nasıl ödeme aldığına göre tasarlandı.",
@@ -426,6 +430,7 @@ export const translations = {
       ],
     },
     appStore: { alt: "Consíguelo en el App Store" },
+    googlePlay: { alt: "Disponible en Google Play" },
     features: {
       heading: "Todo lo que necesitas para tus cuentas",
       sub: "Diseñado para cómo cobran realmente los camioneros.",
@@ -620,6 +625,7 @@ export const translations = {
       ],
     },
     appStore: { alt: "Загрузите в App Store" },
+    googlePlay: { alt: "Доступно в Google Play" },
     features: {
       heading: "Всё, чтобы вести учёт",
       sub: "Создано под то, как реально платят дальнобойщикам.",

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { track } from "@vercel/analytics";
 import { ArrowRight, ShieldCheck, TrendingUp, Clock3 } from "lucide-react";
 import { Phone } from "./Device";
-import AppStoreBadge from "./AppStoreBadge";
+import StoreBadges from "./StoreBadges";
 import { useI18n } from "../lib/providers";
 import home from "../assets/screens/home.webp";
 import loadDetail from "../assets/screens/load-detail.webp";
@@ -103,7 +103,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5, ease }}
                 className="mt-7 flex justify-center lg:justify-start"
               >
-                <AppStoreBadge location="hero" />
+                <StoreBadges location="hero" className="lg:justify-start" />
               </motion.div>
             </div>
 
