@@ -2,7 +2,7 @@
 
 import { track } from "@vercel/analytics";
 import { ArrowRight } from "lucide-react";
-import AppStoreBadge from "./AppStoreBadge";
+import StoreBadges from "./StoreBadges";
 import { useI18n } from "../lib/providers";
 
 // End-of-page call to action on the guides - a small stage, so the pitch for
@@ -34,7 +34,7 @@ export default function GuideCta({ location = "guide", className = "mt-12", tone
           </div>
           <div className="flex shrink-0 flex-col items-start gap-4 sm:flex-row sm:items-center">
             {cta}
-            <AppStoreBadge location={location} />
+            <StoreBadges location={location} />
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function GuideCta({ location = "guide", className = "mt-12", tone
       <p className="mt-3 text-[15px] text-[var(--stage-muted)]">{t("calc.ctaBody")}</p>
       <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row">
         {cta}
-        <AppStoreBadge location={location} />
+        <StoreBadges location={location} />
       </div>
     </div>
   );

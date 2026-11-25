@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { track } from "@vercel/analytics";
 import { ShieldCheck, Trash2, Mail, ArrowRight, ArrowUp, Truck, Lock, ArrowUpRight, Check } from "lucide-react";
 import Logo from "./Logo";
-import AppStoreBadge from "./AppStoreBadge";
+import StoreBadges from "./StoreBadges";
 import SocialLinks from "./SocialLinks";
 import { FadeIn } from "./motion";
 import { useI18n } from "../lib/providers";
@@ -94,7 +94,7 @@ export default function Footer() {
                 {t("hero.cta")}
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </a>
-              <AppStoreBadge location="footer_cta" />
+              <StoreBadges location="footer_cta" />
             </div>
             <p className="mt-5 flex items-center justify-center gap-1.5 text-sm text-[var(--stage-muted)]">
               <ShieldCheck size={15} className="text-success" /> {t("hero.note")}
