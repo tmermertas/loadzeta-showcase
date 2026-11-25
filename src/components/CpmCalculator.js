@@ -30,8 +30,8 @@ function Field({ label, value, onChange, prefix, suffix, step = "any" }) {
 }
 
 const money = (n) =>
-  isFinite(n) ? `$${n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}` : "—";
-const cpm = (n) => (isFinite(n) ? `$${n.toFixed(2)}` : "—");
+  isFinite(n) ? `$${n.toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}` : "-";
+const cpm = (n) => (isFinite(n) ? `$${n.toFixed(2)}` : "-");
 
 export default function CpmCalculator() {
   const { t } = useI18n();
@@ -47,7 +47,7 @@ export default function CpmCalculator() {
   // ("under 10% is strong; 15% is common; above 20% is your biggest leak").
   const [deadhead, setDeadhead] = useState("15");
 
-  // One "calc_used" event per visit, fired on the first edit — measures
+  // One "calc_used" event per visit, fired on the first edit - measures
   // whether the tool actually gets used, not just viewed.
   const usedRef = useRef(false);
   const withUse = (setter) => (v) => {

@@ -1,11 +1,11 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "LoadZeta — Know Your Loads. Track Your Earnings.";
+export const alt = "LoadZeta - Know Your Loads. Track Your Earnings.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Dynamically generated social share image — branded, on-message, no static asset.
+// Dynamically generated social share image - branded, on-message, no static asset.
 export default async function Image() {
   return new ImageResponse(
     (

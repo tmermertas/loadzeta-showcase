@@ -1,4 +1,4 @@
-// LoadZeta wordmark — matches the real app logo: a geometric Z "zeta" glyph
+// LoadZeta wordmark - matches the real app logo: a geometric Z "zeta" glyph
 // (gradient, with the load/speed lines) + "Load" (bold) + "ZETA" (light,
 // letter-spaced, brand blue). Theme-aware: "Load" follows the text color.
 export default function Logo({ className = "", showText = true }) {

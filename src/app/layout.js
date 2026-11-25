@@ -13,9 +13,9 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata = {
   metadataBase: new URL("https://loadzeta.com"),
-  title: "LoadZeta — Know Your Loads. Track Your Earnings.",
+  title: "LoadZeta - Know Your Loads. Track Your Earnings.",
   description:
-    "Load parsing & income tracking built for U.S. truckers. Parse loads in seconds, calculate loaded & deadhead miles, and control your income — company driver or owner-operator. 30 days free, no card.",
+    "Load parsing & income tracking built for U.S. truckers. Parse loads in seconds, calculate loaded & deadhead miles, and control your income - company driver or owner-operator. 30 days free, no card.",
   keywords: ["trucking app", "load tracking", "owner operator", "company driver", "CPM calculator", "trucker income", "settlement", "deadhead miles", "rate confirmation parser", "trucker bookkeeping"],
   applicationName: "LoadZeta",
   authors: [{ name: "Load Zeta" }],
@@ -35,7 +35,7 @@ export const metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   openGraph: {
-    title: "LoadZeta — Know Your Loads. Track Your Earnings.",
+    title: "LoadZeta - Know Your Loads. Track Your Earnings.",
     description: "Load parsing & income tracking for U.S. truckers. 30 days free, no credit card required.",
     url: "https://loadzeta.com",
     siteName: "LoadZeta",
@@ -44,13 +44,13 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "LoadZeta — Know Your Loads. Track Your Earnings.",
+    title: "LoadZeta - Know Your Loads. Track Your Earnings.",
     description: "Load parsing & income tracking for U.S. truckers. 30 days free, no credit card required.",
   },
   icons: { icon: "/favicon.svg", apple: "/favicon.svg" },
 };
 
-// Structured data (JSON-LD) — helps Google render a rich result and understand
+// Structured data (JSON-LD) - helps Google render a rich result and understand
 // the product + pricing. Pricing mirrors the live model.
 const jsonLd = {
   "@context": "https://schema.org",
@@ -59,7 +59,7 @@ const jsonLd = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web, iOS",
   description:
-    "Load parsing and income tracking for U.S. truck drivers — company drivers and owner-operators.",
+    "Load parsing and income tracking for U.S. truck drivers - company drivers and owner-operators.",
   url: "https://loadzeta.com",
   offers: {
     "@type": "Offer",
