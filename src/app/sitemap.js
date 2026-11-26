@@ -18,6 +18,8 @@ export default function sitemap() {
     { url: "https://loadzeta.com/es", lastModified: now, changeFrequency: "weekly", priority: 0.9, alternates: langAlternates },
     { url: "https://loadzeta.com/ru", lastModified: now, changeFrequency: "weekly", priority: 0.9, alternates: langAlternates },
     { url: "https://loadzeta.com/cpm-calculator", lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: "https://loadzeta.com/tools", lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    ...["/load-profit-calculator", "/driver-pay-calculator", "/detention-pay-calculator"].map((p) => ({ url: `https://loadzeta.com${p}`, lastModified: now, changeFrequency: "monthly", priority: 0.8 })),
     // Careers in every language; open roles only (an expired one leaves the
     // sitemap with its structured data).
     ...["/careers", ...openJobs(now).map((j) => `/careers/${j.slug}`)].flatMap((path) =>
