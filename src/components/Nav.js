@@ -9,6 +9,8 @@ import Logo from "./Logo";
 import { useI18n } from "../lib/providers";
 import { localePath, splitLangPath } from "../lib/locale";
 
+const TOOL_PATHS = ["/tools", "/cpm-calculator", "/load-profit-calculator", "/driver-pay-calculator", "/detention-pay-calculator"];
+
 const ease = [0.16, 1, 0.3, 1];
 // Home-page sections the bar can point at while you scroll.
 const SPY = ["features", "how", "pricing"];
@@ -73,13 +75,13 @@ export default function Nav({ overStage = true }) {
 
   // Five items do not fit beside the language, theme and CTA controls below
   // lg; 768-1023px uses the menu button, which renders this SAME array.
-  // Guides and the calculator reuse their footer labels (all four languages).
+  // Guides reuse their footer label; "Free tools" covers /tools and every calculator.
   const links = [
     { href: anchor("#features"), label: t("nav.features"), id: "features" },
     { href: anchor("#how"), label: t("nav.how"), id: "how" },
     { href: anchor("#pricing"), label: t("nav.pricing"), id: "pricing" },
     { href: localePath(lang, "/guides"), label: t("footer.guides"), on: rest.startsWith("/guides") },
-    { href: "/cpm-calculator", label: t("footer.calculator"), on: pathname === "/cpm-calculator" },
+    { href: "/tools", label: t("tools.navLabel"), on: TOOL_PATHS.includes(pathname) },
   ];
   const isOn = (l) => l.on || (isHome && l.id && l.id === active);
 

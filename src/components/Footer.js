@@ -56,6 +56,8 @@ export default function Footer() {
   ];
   const resources = [
     { href: localePath(lang, "/guides"), label: t("footer.guides") },
+    { href: "/tools", label: t("tools.navLabel") },
+    { href: "/load-profit-calculator", label: t("tools.loadTitle") },
     { href: "/cpm-calculator", label: t("footer.calculator") },
     { href: anchor("#faq"), label: t("faq.heading") },
     { href: localePath(lang, "/careers"), label: t("footer.careers") },
